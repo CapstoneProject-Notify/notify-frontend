@@ -1,0 +1,45 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@emotion/react";
+import { theme } from "./styles/theme";
+import styled from "@emotion/styled/macro";
+import GlobalStyles from "./styles/GlobalStyles";
+// import NavBar from "./components/common/NavBar";
+// import Footer from "./components/common/Footer";
+// import NotFound from "./components/common/NotFound";
+
+// Pages import
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+`;
+
+const ContentBox = styled.div`
+  padding: 50px 0px;
+`;
+
+function App() {
+  return (
+    <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Router>
+          <Routes>
+            {/* 렌더링에 NavBar와 Footer 포함 */}
+            {/* 렌더링에 NavBar와 Footer 제외 */}
+            {/* <Route path="/login" exact={true} element={<LoginPage />} /> */}
+
+            {/* NotFound 페이지 */}
+            {/* <Route path="*" exact={true} element={<NotFound />} /> */}
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </MuiThemeProvider>
+  );
+}
+
+export default App;
