@@ -2,6 +2,7 @@ import styled from "@emotion/styled/macro";
 import { NAVBAR_HEIGHT } from "../../../constants/navbar";
 
 export const StyledNavBar = styled.header`
+  padding-top: 5px;
   position: fixed;
   width: 100%;
   height: ${NAVBAR_HEIGHT}px;

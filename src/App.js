@@ -6,8 +6,7 @@ import { theme } from "./styles/theme";
 import styled from "@emotion/styled/macro";
 import GlobalStyles from "./styles/GlobalStyles";
 import NavBar from "./components/common/NavBar";
-// import NavBar from "./components/common/NavBar";
-// import Footer from "./components/common/Footer";
+import Footer from "./components/common/Footer";
 // import NotFound from "./components/common/NotFound";
 
 // Pages import
@@ -41,6 +40,7 @@ function App() {
                 {/* <Route path="*" exact={true} element={<NotFound />} /> */}
               </Routes>
             </ContentBox>
+            <Footer />
           </Container>
         </Router>
       </ThemeProvider>

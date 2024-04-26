@@ -28,11 +28,11 @@ function NavBar() {
       <NavBarContainer>
         <Link to="/">
           <NavBarLogoContainer>
-            <Logo variant="small" />
+            <Logo variant="40" />
           </NavBarLogoContainer>
         </Link>
         <NavBarMenuContainer>
-          <Link to="/notify">
+          <Link to="/notice">
             <NavBarMenuText>공지사항</NavBarMenuText>
           </Link>
           <Link to="/strap">
