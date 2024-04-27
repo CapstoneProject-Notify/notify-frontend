@@ -2,7 +2,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import imageSet from "../../constants/imageSet";
 import { useState } from "react";
-import { CarouselWapper } from "./styles";
+import { CarouselWapper, PictureText } from "./styles";
 
 const renderSlides = imageSet.map((image) => (
   <div key={image.alt}>
@@ -27,6 +27,9 @@ function ImageSlider() {
       >
         {renderSlides}
       </Carousel>
+      <PictureText>
+        학교 생활에서의 기회가 무효화되지 않도록, Notify.
+      </PictureText>
     </CarouselWapper>
   );
 }

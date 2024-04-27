@@ -14,7 +14,7 @@ function Footer() {
         </FooterTextContainer>
         <FooterTextContainer></FooterTextContainer>
         <FooterTextContainer>
-          <Logo variant="40" />
+          <Logo variant="25" />
         </FooterTextContainer>
       </FooterContainer>
     </StyledFooter>
