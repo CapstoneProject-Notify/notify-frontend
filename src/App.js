@@ -5,8 +5,8 @@ import { ThemeProvider } from "@emotion/react";
 import { theme } from "./styles/theme";
 import styled from "@emotion/styled/macro";
 import GlobalStyles from "./styles/GlobalStyles";
-import NavBar from "./components/common/NavBar";
-import Footer from "./components/common/Footer";
+// import NavBar from "./components/common/NavBar";
+// import Footer from "./components/common/Footer";
 // import NotFound from "./components/common/NotFound";
 
 // Pages import
@@ -28,20 +28,14 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Router>
-          <Container>
-            <NavBar />
-            <ContentBox>
-              <Routes>
-                {/* 렌더링에 NavBar와 Footer 포함 */}
-                {/* 렌더링에 NavBar와 Footer 제외 */}
-                {/* <Route path="/login" exact={true} element={<LoginPage />} /> */}
+          <Routes>
+            {/* 렌더링에 NavBar와 Footer 포함 */}
+            {/* 렌더링에 NavBar와 Footer 제외 */}
+            {/* <Route path="/login" exact={true} element={<LoginPage />} /> */}
 
-                {/* NotFound 페이지 */}
-                {/* <Route path="*" exact={true} element={<NotFound />} /> */}
-              </Routes>
-            </ContentBox>
-            <Footer />
-          </Container>
+            {/* NotFound 페이지 */}
+            {/* <Route path="*" exact={true} element={<NotFound />} /> */}
+          </Routes>
         </Router>
       </ThemeProvider>
     </MuiThemeProvider>
