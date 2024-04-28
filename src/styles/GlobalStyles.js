@@ -21,9 +21,11 @@ export const globalStyles = (theme, isOpen) => css`
         src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
           format("woff");
       }
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap");
     }
     font-size: 16px;
-    font-family: "GmarketSansMedium", "Pretendard Std Variable",
+    font-variation-settings: "slnt" 0;
+    font-family: "Inter", "GmarketSansMedium", "Pretendard Std Variable",
       "Pretendard Std", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
       Roboto, "Helvetica Neue", "Segoe UI", "Apple Color Emoji",
       "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
@@ -37,7 +39,7 @@ export const globalStyles = (theme, isOpen) => css`
     overflow-y: scroll;
   }
   body {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     color: black;
   }
 
