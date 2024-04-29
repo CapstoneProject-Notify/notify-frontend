@@ -9,13 +9,13 @@ import FillLikeIcon from "../../assets/fill_like.svg";
 import NotFillLikeIcon from "../../assets/not_fill_like.svg";
 import { useState } from "react";
 
-function Notice(props) {
+function Notice({ data }) {
   const [isLiked, setIsLiked] = useState();
   return (
     <NoticeContainer>
-      <Title>{props.title}</Title>
+      <Title>{data.title}</Title>
       <RightContainer>
-        <CreatedAt>작성일 : {props.created_at}</CreatedAt>
+        <CreatedAt>작성일 : {data.noticeDate}</CreatedAt>
         <Like src={NotFillLikeIcon} />
       </RightContainer>
     </NoticeContainer>

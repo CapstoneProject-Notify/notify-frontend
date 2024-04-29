@@ -5,12 +5,13 @@ export const NoticeContainer = styled.div`
   background-color: white;
   width: 100%;
   height: 50px;
-  line-height: 30px;
+  line-height: 50px;
   border-radius: 10px;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   justify-content: space-between;
-  padding: 10px;
+  padding: 0px 20px;
   background-color: ${({ theme }) => theme.color.lightGreen};
+  margin-bottom: 20px;
 `;
 
 export const Title = styled.div`
@@ -29,10 +30,10 @@ export const CreatedAt = styled.div`
 `;
 
 export const Like = styled.img`
-  margin-top: 2px;
   :focus {
     cursor: pointer;
   }
   width: 25px;
   height: 25px;
+  margin-top: 12px;
 `;
