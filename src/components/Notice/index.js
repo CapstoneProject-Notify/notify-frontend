@@ -22,6 +22,7 @@ function Notice({ data, type }) {
       onClick={() =>
         window.open("https://" + data.url, "_blank", "noopener, noreferrer")
       }
+      isScrapped={isScrapped}
     >
       <Title>{data.title}</Title>
       <RightContainer>
