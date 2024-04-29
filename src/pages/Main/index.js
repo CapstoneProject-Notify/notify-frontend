@@ -43,7 +43,11 @@ function MainPage() {
 
   const getPost = () => {
     commonAxios
-      .get(`/notice?type=com&page=1`)
+      .get(`/notice?type=com&page=1`, {
+        // headers: {
+        //     Authorization: `Bearer ${JWT token}`
+        // }
+      })
       .then((res) => {
         setNewPost(res.data.notices);
       })
@@ -61,16 +65,16 @@ function MainPage() {
         </TitleContainer>
         {newPost.length > 0 ? (
           <>
-            <Notice data={newPost[0]} />
-            <Notice data={newPost[1]} />
-            <Notice data={newPost[2]} />
+            <Notice data={newPost[0]} type={true} />
+            <Notice data={newPost[1]} type={true} />
+            <Notice data={newPost[2]} type={true} />
           </>
         ) : (
           ""
         )}
-        <Notice data={data.data.notices[0]} />
-        <Notice data={data.data.notices[1]} />
-        <Notice data={data.data.notices[2]} />
+        <Notice data={data.data.notices[0]} type={true} />
+        <Notice data={data.data.notices[1]} type={true} />
+        <Notice data={data.data.notices[2]} type={true} />
       </AppLayout>
     </>
   );

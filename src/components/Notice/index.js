@@ -9,14 +9,29 @@ import FillLikeIcon from "../../assets/fill_like.svg";
 import NotFillLikeIcon from "../../assets/not_fill_like.svg";
 import { useState } from "react";
 
-function Notice({ data }) {
-  const [isLiked, setIsLiked] = useState();
+function Notice({ data, type }) {
+  const [isScrapped, setIsScrapped] = useState(data.isScrapped);
+
+  const handleScrapClick = (e) => {
+    e.stopPropagation();
+    setIsScrapped(!isScrapped);
+  };
+
   return (
-    <NoticeContainer>
+    <NoticeContainer
+      onClick={() =>
+        window.open("https://" + data.url, "_blank", "noopener, noreferrer")
+      }
+    >
       <Title>{data.title}</Title>
       <RightContainer>
-        <CreatedAt>작성일 : {data.noticeDate}</CreatedAt>
-        <Like src={NotFillLikeIcon} />
+        <CreatedAt>
+          {type ? "작성일 :" : ""} {data.noticeDate}
+        </CreatedAt>
+        <Like
+          src={isScrapped ? FillLikeIcon : NotFillLikeIcon}
+          onClick={handleScrapClick}
+        />
       </RightContainer>
     </NoticeContainer>
   );
