@@ -4,14 +4,19 @@ import {
   NavBarMenuContainer,
   NavBarMenuText,
   StyledNavBar,
+  NoticeMenuText,
+  NoticeMenuContainer,
+  NoticeMenu,
 } from "./styles";
 import Logo from "../Logo";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 //   import { getCookie } from '../../../utils/getCookie';
 //   import { useNavigate } from 'react-router-dom';
 //   import { deleteCookie } from '../../../utils/deleteCookie';
 
 function NavBar() {
+  const { location } = useLocation();
   // const navigate = useNavigate();
 
   // const handleLogout = () => {
@@ -33,7 +38,17 @@ function NavBar() {
         </Link>
         <NavBarMenuContainer>
           <Link to="/notice">
-            <NavBarMenuText>공지사항</NavBarMenuText>
+            <NoticeMenuText>
+              <NavBarMenuText>공지사항</NavBarMenuText>
+              <NoticeMenuContainer>
+                <Link to="/notice?type=com">
+                  <NoticeMenu>학교</NoticeMenu>
+                </Link>
+                <Link to="/notice?type=aai">
+                  <NoticeMenu>학과</NoticeMenu>
+                </Link>
+              </NoticeMenuContainer>
+            </NoticeMenuText>
           </Link>
           <Link to="/strap">
             <NavBarMenuText>스크랩</NavBarMenuText>
@@ -42,22 +57,4 @@ function NavBar() {
             <NavBarMenuText>전화번호</NavBarMenuText>
           </Link>
           <Link to="/mem/profile">
-            <NavBarMenuText>프로필</NavBarMenuText>
-          </Link>
-          <Link to="/mem/login">
-            <NavBarMenuText>로그인</NavBarMenuText>
-          </Link>
-          {/* {isLoggedIn ? (
-              <NavBarMenuText onClick={handleLogout}>로그아웃</NavBarMenuText>
-            ) : (
-              <Link to="/login">
-                <NavBarMenuText>로그인</NavBarMenuText>
-              </Link>
-            )} */}
-        </NavBarMenuContainer>
-      </NavBarContainer>
-    </StyledNavBar>
-  );
-}
-
-export default NavBar;
+            <NavBarMenuText>프로필
