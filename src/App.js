@@ -43,4 +43,11 @@ function App() {
               </Routes>
             </ContentBox>
             <Footer />
-          </Container
+          </Container>
+        </Router>
+      </ThemeProvider>
+    </MuiThemeProvider>
+  );
+}
+
+export default App;

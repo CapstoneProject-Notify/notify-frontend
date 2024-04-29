@@ -57,4 +57,22 @@ function NavBar() {
             <NavBarMenuText>전화번호</NavBarMenuText>
           </Link>
           <Link to="/mem/profile">
-            <NavBarMenuText>프로필
+            <NavBarMenuText>프로필</NavBarMenuText>
+          </Link>
+          <Link to="/mem/login">
+            <NavBarMenuText>로그인</NavBarMenuText>
+          </Link>
+          {/* {isLoggedIn ? (
+              <NavBarMenuText onClick={handleLogout}>로그아웃</NavBarMenuText>
+            ) : (
+              <Link to="/login">
+                <NavBarMenuText>로그인</NavBarMenuText>
+              </Link>
+            )} */}
+        </NavBarMenuContainer>
+      </NavBarContainer>
+    </StyledNavBar>
+  );
+}
+
+export default NavBar;

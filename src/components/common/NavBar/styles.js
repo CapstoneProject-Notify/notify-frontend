@@ -40,4 +40,40 @@ export const NavBarMenuText = styled.li`
   line-height: 50px;
   text-align: center;
   padding: 0px 20px;
-  cursor:
+  cursor: pointer;
+  :hover {
+    color: ${({ theme }) => theme.color.orange};
+  }
+`;
+
+export const NoticeMenuText = styled.div`
+  width: 100%;
+  height: 50px;
+  :hover {
+    background-color: ${({ theme }) => theme.color.lightOrange};
+  }
+`;
+
+export const NoticeMenuContainer = styled.ul`
+  position: absolute;
+  display: none;
+  width: max-content;
+  background-color: ${({ theme }) => theme.color.black};
+  ${NoticeMenuText}:hover & {
+    display: block;
+  }
+`;
+
+export const NoticeMenu = styled.li`
+  width: 150px;
+  height: 40px;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  line-height: 40px;
+  background-color: ${({ theme }) => theme.color.white};
+  :hover {
+    background-color: ${({ theme }) => theme.color.lightOrange};
+    color: ${({ theme }) => theme.color.orange};
+  }
+`;

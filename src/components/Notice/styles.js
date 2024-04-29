@@ -34,4 +34,6 @@ export const Like = styled.img`
     cursor: pointer;
   }
   width: 25px;
-  height: 2
+  height: 25px;
+  margin-top: 12px;
+`;

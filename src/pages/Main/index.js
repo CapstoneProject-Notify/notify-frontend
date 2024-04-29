@@ -25,4 +25,39 @@ const data = {
         isScrapped: false,
         url: "www.aaa.com",
       },
-    
+      {
+        noticeId: 1,
+        title: "장학",
+        noticeDate: "2024-02-02",
+        isScrapped: false,
+        url: "www.aaa.com",
+      },
+    ],
+  },
+};
+
+function MainPage() {
+  return (
+    <>
+      <ImageSlider />
+      <AppLayout>
+        <TitleContainer>
+          <Title text1="NEW " text2="POST!" />
+        </TitleContainer>
+        <Notice data={data.data.notices[0]} />
+        <Notice data={data.data.notices[1]} />
+        <Notice data={data.data.notices[2]} />
+      </AppLayout>
+    </>
+  );
+}
+
+export default MainPage;
+
+export const TitleContainer = styled.div`
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  margin: 30px;
+  font-weight: 800;
+`;
