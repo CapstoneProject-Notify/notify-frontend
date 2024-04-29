@@ -8,6 +8,7 @@ import { commonAxios } from "../../utils/commonAxios";
 import { useState } from "react";
 import NoticeList from "../../components/NoticeList";
 import Pagenation from "../../components/Pagenation";
+import { useLocation } from "react-router-dom";
 
 const data = {
   code: 200,
@@ -44,10 +45,12 @@ const data = {
 function PostPage() {
   const [postInfo, setPostInfo] = useState([]);
   const [page, setPage] = useState(1);
+  const location = useLocation();
+  const type = location.search;
 
   const getPost = () => {
     commonAxios
-      .get(`/notice?type=com&page=${page}`, {
+      .get(`/notice${type}&page=${page}`, {
         // headers: {
         //     Authorization: `Bearer ${JWT token}`
         // }
@@ -63,7 +66,9 @@ function PostPage() {
     <>
       <AppLayout>
         <SearchContainer>
-          <TitleText>School Post</TitleText>
+          <TitleText>
+            {type == "?type=com" ? "School Post" : "Department Post"}
+          </TitleText>
           <SearchInput>
             <SearchBox></SearchBox>
             <SearchButton></SearchButton>
