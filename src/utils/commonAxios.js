@@ -11,8 +11,6 @@ commonAxios.interceptors.response.use(
   (error) => {
     console.error(error);
     if (error.response.status === 401) {
-      deleteCookie("access_token");
-
       window.location.href = "/";
 
       return;

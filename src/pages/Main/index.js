@@ -3,6 +3,8 @@ import Notice from "../../components/Notice";
 import AppLayout from "../../components/common/AppLayout";
 import Title from "../../components/common/Title";
 import styled from "@emotion/styled/macro";
+import { commonAxios } from "../../utils/commonAxios";
+import { useEffect, useState } from "react";
 
 const data = {
   code: 200,
@@ -37,6 +39,19 @@ const data = {
 };
 
 function MainPage() {
+  const [newPost, setNewPost] = useState([]);
+
+  const getPost = () => {
+    commonAxios
+      .get(`/notice?type=com&page=1`)
+      .then((res) => {
+        setNewPost(res.data.notices);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <>
       <ImageSlider />
@@ -44,6 +59,15 @@ function MainPage() {
         <TitleContainer>
           <Title text1="NEW" text2=" POST!" />
         </TitleContainer>
+        {newPost.length > 0 ? (
+          <>
+            <Notice data={newPost[0]} />
+            <Notice data={newPost[1]} />
+            <Notice data={newPost[2]} />
+          </>
+        ) : (
+          ""
+        )}
         <Notice data={data.data.notices[0]} />
         <Notice data={data.data.notices[1]} />
         <Notice data={data.data.notices[2]} />
