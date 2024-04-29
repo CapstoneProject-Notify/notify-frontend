@@ -4,6 +4,10 @@ import SearchBox from "../../components/common/SearchBox";
 import SearchButton from "../../components/common/SearchButton";
 
 import styled from "@emotion/styled/macro";
+import { commonAxios } from "../../utils/commonAxios";
+import { useState } from "react";
+import NoticeList from "../../components/NoticeList";
+import Pagenation from "../../components/Pagenation";
 
 const data = {
   code: 200,
@@ -38,6 +42,23 @@ const data = {
 };
 
 function PostPage() {
+  const [postInfo, setPostInfo] = useState([]);
+  const [page, setPage] = useState(1);
+
+  const getPost = () => {
+    commonAxios
+      .get(`/notice?type=com&page=${page}`, {
+        // headers: {
+        //     Authorization: `Bearer ${JWT token}`
+        // }
+      })
+      .then((res) => {
+        setPostInfo(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   return (
     <>
       <AppLayout>
@@ -48,6 +69,13 @@ function PostPage() {
             <SearchButton></SearchButton>
           </SearchInput>
         </SearchContainer>
+        {/* <NoticeList info={postInfo.notices} />
+        <Pagenation
+          limit={postInfo.notices.length}
+          page={page}
+          setPage={setPage}
+          totalPages={data.totalPages}
+        /> */}
         <Notice data={data.data.notices[0]} />
         <Notice data={data.data.notices[1]} />
         <Notice data={data.data.notices[2]} />
