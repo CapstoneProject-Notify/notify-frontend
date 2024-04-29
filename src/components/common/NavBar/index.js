@@ -37,7 +37,7 @@ function NavBar() {
           </NavBarLogoContainer>
         </Link>
         <NavBarMenuContainer>
-          <Link to="/notice">
+          <Link to={location}>
             <NoticeMenuText>
               <NavBarMenuText>공지사항</NavBarMenuText>
               <NoticeMenuContainer>

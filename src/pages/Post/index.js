@@ -1,7 +1,8 @@
-import ImageSlider from "../../components/ImageSlider";
 import Notice from "../../components/Notice";
 import AppLayout from "../../components/common/AppLayout";
-import Title from "../../components/common/Title";
+import SearchBox from "../../components/common/SearchBox";
+import SearchButton from "../../components/common/SearchButton";
+
 import styled from "@emotion/styled/macro";
 
 const data = {
@@ -36,14 +37,17 @@ const data = {
   },
 };
 
-function MainPage() {
+function PostPage() {
   return (
     <>
-      <ImageSlider />
       <AppLayout>
-        <TitleContainer>
-          <Title text1="NEW" text2=" POST!" />
-        </TitleContainer>
+        <SearchContainer>
+          <TitleText>School Post</TitleText>
+          <SearchInput>
+            <SearchBox></SearchBox>
+            <SearchButton></SearchButton>
+          </SearchInput>
+        </SearchContainer>
         <Notice data={data.data.notices[0]} />
         <Notice data={data.data.notices[1]} />
         <Notice data={data.data.notices[2]} />
@@ -52,12 +56,23 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default PostPage;
 
-export const TitleContainer = styled.div`
+export const SearchContainer = styled.div`
   width: 100%;
-  justify-content: center;
-  display: flex;
-  margin: 30px;
-  font-weight: 800;
+  margin: 50px 0;
+  border-bottom: 1px solid;
+`;
+
+export const TitleText = styled.div`
+  width: 100%;
+  text-align: left;
+  font-size: 30px;
+  margin-bottom: 20px;
+`;
+
+export const SearchInput = styled.div`
+  width: 100%;
+  text-align: right;
+  margin-bottom: 50px;
 `;

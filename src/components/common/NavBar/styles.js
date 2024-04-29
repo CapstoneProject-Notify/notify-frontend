@@ -27,9 +27,7 @@ export const NavBarLogoContainer = styled.div`
 
 export const NavBarMenuContainer = styled.ul`
   display: flex;
-  column-gap: 20px;
   align-items: center;
-  padding-right: 30px;
 `;
 
 export const NavBarMenuText = styled.li`
@@ -59,6 +57,7 @@ export const NoticeMenuContainer = styled.ul`
   display: none;
   width: max-content;
   background-color: ${({ theme }) => theme.color.black};
+  box-shadow: 0px 5px 5px -2px gray;
   ${NoticeMenuText}:hover & {
     display: block;
   }

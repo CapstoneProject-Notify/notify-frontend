@@ -11,6 +11,7 @@ import Footer from "./components/common/Footer";
 
 // Pages import
 import MainPage from "./pages/Main";
+import PostPage from "./pages/Post";
 
 const Container = styled.div`
   display: flex;
@@ -34,8 +35,7 @@ function App() {
             <ContentBox>
               <Routes>
                 <Route path="/" element={<MainPage />} />
-                {/* 렌더링에 NavBar와 Footer 포함 */}
-                {/* 렌더링에 NavBar와 Footer 제외 */}
+                <Route path="/notice" element={<PostPage />} />
                 {/* <Route path="/login" exact={true} element={<LoginPage />} /> */}
 
                 {/* NotFound 페이지 */}
