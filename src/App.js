@@ -7,6 +7,9 @@ import styled from "@emotion/styled/macro";
 import GlobalStyles from "./styles/GlobalStyles";
 import NavBar from "./components/common/NavBar";
 import Footer from "./components/common/Footer";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
 // import NotFound from "./components/common/NotFound";
 
 // Pages import
@@ -24,26 +27,35 @@ const ContentBox = styled.div`
   padding: 50px 0px;
 `;
 
+// 페이지 레이아웃 설정
+const Layout = ({ children }) => (
+  <Container>
+    <NavBar />
+    <ContentBox>{children}</ContentBox>
+    <Footer />
+  </Container>
+);
+
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Router>
-          <Container>
-            <NavBar />
-            <ContentBox>
-              <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="/notice" element={<PostPage />} />
-                {/* <Route path="/login" exact={true} element={<LoginPage />} /> */}
 
-                {/* NotFound 페이지 */}
-                {/* <Route path="*" exact={true} element={<NotFound />} /> */}
-              </Routes>
-            </ContentBox>
-            <Footer />
-          </Container>
+          <Routes>
+            {/* 렌더링에 NavBar와 Footer 포함 */}
+            <Route path="/" element={<Layout children={<MainPage/>}/>}/>
+            <Route path="/notice" {<Layout children={<PostPage/>}/>}/>
+            <Route path="/mem/profile" element={<Layout children={<ProfilePage/>}/>}/>
+              {/* 렌더링에 NavBar와 Footer 제외  */}
+            <Route path="/mem/login" element={<LoginPage />} />
+            <Route path="/mem/register" element={<RegisterPage />} />
+            
+            {/* NotFound 페이지 */}
+            {/* <Route path="*" exact={true} element={<NotFound />} /> */}
+          </Routes>
+
         </Router>
       </ThemeProvider>
     </MuiThemeProvider>
