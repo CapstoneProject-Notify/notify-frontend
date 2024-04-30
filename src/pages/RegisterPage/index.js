@@ -7,12 +7,11 @@ import RegisterButton from "../../components/common/RegisterButton";
 import React, { useState } from "react";
 
 const Text = styled.div`
-  height: 46px;
-  width: 1000px;
+  height: 40px;
+  width: 100%;
   justify-content: left;
   align-items: left;
-  padding-left: 10px;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-weight: 100;
   font-size: 40px;
   font-style: italic;
@@ -21,13 +20,13 @@ const Text = styled.div`
 `;
 
 const MajorContainer = styled.div`
-  height: 46px;
-  width: 1000px;
+  height: 50px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 `;
 const MagorContent = styled.span`
   padding-left: 15px;
@@ -46,7 +45,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh; /* 화면 전체 높이 */
-  width: 80vh;
+  width: 100vh;
 `;
 
 const LogoContainer = styled.div`
@@ -58,6 +57,7 @@ const LogoContainer = styled.div`
 
 const WarningText = styled.div`
   font-size: 14px;
+  margin-top: 20px;
   color: ${({ theme }) => theme.color.btnOrange};
 `;
 
@@ -68,7 +68,7 @@ function RegisterPage() {
     <PageContainer>
       <Container>
         <LogoContainer>
-          <Logo variant={180} />
+          <Logo variant={150} />
         </LogoContainer>
         <Text>E-mail</Text>
         <InputBox />

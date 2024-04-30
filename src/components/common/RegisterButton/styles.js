@@ -4,12 +4,15 @@ export const GreenBackground = styled.button`
   border-radius: 5px;
   border: none;
   background-color: ${({ theme }) => theme.color.btnGreen};
-  color: #FFFFFF;
-  height: 46px;
+  color: #ffffff;
+  height: 50px;
   width: fit-content;
-  padding: 7px;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-style: italic;
   font-size: 17px;
   margin-bottom: 10px;
+  padding: 0 20px;
+  :hover {
+    cursor: pointer;
+  }
 `;
