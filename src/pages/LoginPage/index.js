@@ -1,4 +1,3 @@
-
 import styled from "@emotion/styled/macro";
 import GlobalStyles from "../../styles/GlobalStyles";
 import GoogleLoginButton from "../../components/common/GoogleLoginButton";
@@ -24,7 +23,7 @@ function LoginPage() {
     <div>
       <Container>
         <LogoContainer>
-        <Logo />
+          <Logo />
         </LogoContainer>
         <GoogleLoginButton />
       </Container>

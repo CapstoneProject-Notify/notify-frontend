@@ -11,22 +11,23 @@ import {
 import Logo from "../Logo";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-//   import { getCookie } from '../../../utils/getCookie';
-//   import { useNavigate } from 'react-router-dom';
-//   import { deleteCookie } from '../../../utils/deleteCookie';
+import { getCookie } from "../../../utils/getCookie";
+import { useNavigate } from "react-router-dom";
+import { deleteCookie } from "../../../utils/deleteCookie";
+import { GoogleLogin, googleLogout, useGoogleLogin } from "@react-oauth/google";
 
 function NavBar() {
   const { location } = useLocation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const handleLogout = () => {
-  //   // access_token 쿠키 삭제
-  //   deleteCookie('access_token');
+  const handleLogout = () => {
+    googleLogout();
 
-  //   navigate('/');
-  // };
+    navigate("/");
+  };
 
-  // const isLoggedIn = getCookie('access_token') !== null;
+  const isLoggedIn = getCookie("g_state") !== null;
+  console.log(isLoggedIn);
 
   return (
     <StyledNavBar>
@@ -59,16 +60,16 @@ function NavBar() {
           <Link to="/mem/profile">
             <NavBarMenuText>프로필</NavBarMenuText>
           </Link>
-          <Link to="/mem/login">
+          {/* <Link to="/mem/login">
             <NavBarMenuText>로그인</NavBarMenuText>
-          </Link>
-          {/* {isLoggedIn ? (
-              <NavBarMenuText onClick={handleLogout}>로그아웃</NavBarMenuText>
-            ) : (
-              <Link to="/login">
-                <NavBarMenuText>로그인</NavBarMenuText>
-              </Link>
-            )} */}
+          </Link> */}
+          {false ? (
+            <NavBarMenuText onClick={handleLogout}>로그아웃</NavBarMenuText>
+          ) : (
+            <Link to="/mem/login">
+              <NavBarMenuText>로그인</NavBarMenuText>
+            </Link>
+          )}
         </NavBarMenuContainer>
       </NavBarContainer>
     </StyledNavBar>

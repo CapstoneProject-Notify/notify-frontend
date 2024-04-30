@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "./styles/theme";
 import styled from "@emotion/styled/macro";
@@ -15,6 +16,9 @@ import ProfilePage from "./pages/ProfilePage";
 // Pages import
 import MainPage from "./pages/Main";
 import PostPage from "./pages/Post";
+
+const clientId =
+  "274293442288-o0a6h7fujbrdcsfob1993uje484mpim5.apps.googleusercontent.com";
 
 const Container = styled.div`
   display: flex;
@@ -38,27 +42,33 @@ const Layout = ({ children }) => (
 
 function App() {
   return (
-    <MuiThemeProvider theme={theme}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Router>
-
-          <Routes>
-            {/* 렌더링에 NavBar와 Footer 포함 */}
-            <Route path="/" element={<Layout children={<MainPage/>}/>}/>
-            <Route path="/notice" {<Layout children={<PostPage/>}/>}/>
-            <Route path="/mem/profile" element={<Layout children={<ProfilePage/>}/>}/>
+    <GoogleOAuthProvider clientId={clientId}>
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Router>
+            <Routes>
+              {/* 렌더링에 NavBar와 Footer 포함 */}
+              <Route path="/" element={<Layout children={<MainPage />} />} />
+              <Route
+                path="/notice"
+                element={<Layout children={<PostPage />} />}
+              />
+              <Route
+                path="/mem/profile"
+                element={<Layout children={<ProfilePage />} />}
+              />
               {/* 렌더링에 NavBar와 Footer 제외  */}
-            <Route path="/mem/login" element={<LoginPage />} />
-            <Route path="/mem/register" element={<RegisterPage />} />
-            
-            {/* NotFound 페이지 */}
-            {/* <Route path="*" exact={true} element={<NotFound />} /> */}
-          </Routes>
+              <Route path="/mem/login" element={<LoginPage />} />
+              <Route path="/mem/register" element={<RegisterPage />} />
 
-        </Router>
-      </ThemeProvider>
-    </MuiThemeProvider>
+              {/* NotFound 페이지 */}
+              {/* <Route path="*" exact={true} element={<NotFound />} /> */}
+            </Routes>
+          </Router>
+        </ThemeProvider>
+      </MuiThemeProvider>
+    </GoogleOAuthProvider>
   );
 }
 

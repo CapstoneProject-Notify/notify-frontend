@@ -1,7 +1,8 @@
 import axios from "axios";
+import { deleteCookie } from "./deleteCookie";
 
 const commonAxios = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "http://15.164.34.15:8081",
   withCredentials: true,
 });
 
@@ -11,6 +12,7 @@ commonAxios.interceptors.response.use(
   (error) => {
     console.error(error);
     if (error.response.status === 401) {
+      deleteCookie("access_token");
       window.location.href = "/";
 
       return;
