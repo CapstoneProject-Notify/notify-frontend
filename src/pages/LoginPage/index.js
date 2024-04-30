@@ -2,8 +2,7 @@ import styled from "@emotion/styled/macro";
 import GlobalStyles from "../../styles/GlobalStyles";
 import GoogleLoginButton from "../../components/common/GoogleLoginButton";
 import Logo from "../../components/common/Logo";
-import { useState } from "react";
-import { commonAxios } from "../../utils/commonAxios";
+
 
 
 const Container = styled.div`

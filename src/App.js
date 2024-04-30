@@ -41,7 +41,7 @@ const Layout = ({ children }) => (
 
 function App() {
   return (
-    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+    <GoogleOAuthProvider clientId={clientId}>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
