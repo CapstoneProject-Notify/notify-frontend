@@ -2,7 +2,7 @@ import axios from "axios";
 import { deleteCookie } from "./deleteCookie";
 
 const commonAxios = axios.create({
-  baseURL: "http://15.164.34.15:8081",
+  baseURL: process.env.REACT_APP_API_ENDPOINT,
   withCredentials: true,
 });
 

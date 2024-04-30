@@ -33,7 +33,7 @@ function NavBar() {
     console.log(authToken);
   }, []);
 
-  console.log("isLoggedIm", isLoggedIn);
+  console.log("isLoggedIn", isLoggedIn);
 
   return (
     <StyledNavBar>

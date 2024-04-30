@@ -17,8 +17,7 @@ import ProfilePage from "./pages/ProfilePage";
 import MainPage from "./pages/Main";
 import PostPage from "./pages/Post";
 
-const clientId =
-  "274293442288-o0a6h7fujbrdcsfob1993uje484mpim5.apps.googleusercontent.com";
+const clientId = `${process.env.REACT_APP_GOOGLE_CLIENT_ID}`;
 
 const Container = styled.div`
   display: flex;
