@@ -11,23 +11,29 @@ import {
 import Logo from "../Logo";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { getCookie } from "../../../utils/getCookie";
 import { useNavigate } from "react-router-dom";
-import { deleteCookie } from "../../../utils/deleteCookie";
-import { GoogleLogin, googleLogout, useGoogleLogin } from "@react-oauth/google";
+import { googleLogout } from "@react-oauth/google";
+import { useState, useEffect } from "react";
 
 function NavBar() {
   const { location } = useLocation();
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogout = () => {
+    localStorage.removeItem("autoToken");
+    setIsLoggedIn(false);
     googleLogout();
-
     navigate("/");
   };
 
-  const isLoggedIn = getCookie("g_state") !== null;
-  console.log(isLoggedIn);
+  useEffect((e) => {
+    const authToken = localStorage.getItem("authToken");
+    setIsLoggedIn(authToken);
+    console.log(authToken);
+  }, []);
+
+  console.log("isLoggedIm", isLoggedIn);
 
   return (
     <StyledNavBar>
@@ -63,7 +69,7 @@ function NavBar() {
           {/* <Link to="/mem/login">
             <NavBarMenuText>로그인</NavBarMenuText>
           </Link> */}
-          {false ? (
+          {isLoggedIn ? (
             <NavBarMenuText onClick={handleLogout}>로그아웃</NavBarMenuText>
           ) : (
             <Link to="/mem/login">
