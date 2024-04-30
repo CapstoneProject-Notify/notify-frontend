@@ -27,8 +27,8 @@ function NavBar() {
     navigate("/");
   };
 
-  useEffect((e) => {
-    const authToken = localStorage.getItem("authToken");
+  useEffect(() => {
+    const authToken = /true/i.test(localStorage.getItem("authToken"));
     setIsLoggedIn(authToken);
     console.log(authToken);
   }, []);
@@ -66,9 +66,6 @@ function NavBar() {
           <Link to="/mem/profile">
             <NavBarMenuText>프로필</NavBarMenuText>
           </Link>
-          {/* <Link to="/mem/login">
-            <NavBarMenuText>로그인</NavBarMenuText>
-          </Link> */}
           {isLoggedIn ? (
             <NavBarMenuText onClick={handleLogout}>로그아웃</NavBarMenuText>
           ) : (

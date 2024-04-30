@@ -28,8 +28,6 @@ const GoogleLoginButton = () => {
       onSuccess={(res) => {
         let info = jwt_decode(res.credential);
         postLogin(info.email.split("@")[0]);
-
-        //   login(); // 로그인 성공 시 로그인 상태를 변경
       }}
       onFailure={(err) => {
         console.log(err);

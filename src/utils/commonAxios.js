@@ -1,5 +1,4 @@
 import axios from "axios";
-import { deleteCookie } from "./deleteCookie";
 
 const commonAxios = axios.create({
   baseURL: process.env.REACT_APP_API_ENDPOINT,
@@ -12,7 +11,6 @@ commonAxios.interceptors.response.use(
   (error) => {
     console.error(error);
     if (error.response.status === 401) {
-      deleteCookie("access_token");
       window.location.href = "/";
 
       return;
