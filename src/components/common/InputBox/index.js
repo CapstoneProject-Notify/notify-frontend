@@ -1,9 +1,11 @@
 import { BoxBackground } from "./styles";
 
-function InputBox() {
+function InputBox(props) {
   return (
-    <BoxBackground>
-    </BoxBackground>
+    <BoxBackground
+      value={props.value}
+      onChange={props.onChange}
+    ></BoxBackground>
   );
 }
 

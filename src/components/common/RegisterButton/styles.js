@@ -12,7 +12,8 @@ export const GreenBackground = styled.button`
   font-size: 17px;
   margin-bottom: 10px;
   padding: 0 20px;
-  :hover {
+  &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.color.deepBlue};
   }
 `;

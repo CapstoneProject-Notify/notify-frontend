@@ -22,6 +22,7 @@ function NavBar() {
 
   const handleLogout = () => {
     localStorage.removeItem("autoToken");
+    localStorage.removeItem("googleId");
     setIsLoggedIn(false);
     googleLogout();
     navigate("/");
@@ -30,7 +31,11 @@ function NavBar() {
   useEffect(() => {
     const authToken = /true/i.test(localStorage.getItem("authToken"));
     setIsLoggedIn(authToken);
-    console.log(authToken);
+    if (authToken === false) {
+      googleLogout();
+      setIsLoggedIn(false);
+    }
+    console.log("authToken", authToken);
   }, []);
 
   console.log("isLoggedIn", isLoggedIn);

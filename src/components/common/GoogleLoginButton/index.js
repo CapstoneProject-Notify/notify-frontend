@@ -13,10 +13,12 @@ const GoogleLoginButton = () => {
         console.log(res);
         if (res.data.code == 404) {
           navigate("/mem/register");
+          localStorage.setItem("authToken", false);
         } else if (res.data.code == 200) {
           localStorage.setItem("authToken", true);
           navigate("/");
         }
+        localStorage.setItem("googleId", memId);
       })
       .catch((err) => {
         console.error(err);
@@ -27,6 +29,7 @@ const GoogleLoginButton = () => {
     <GoogleLogin
       onSuccess={(res) => {
         let info = jwt_decode(res.credential);
+        console.log(info);
         postLogin(info.email.split("@")[0]);
       }}
       onFailure={(err) => {

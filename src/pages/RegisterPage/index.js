@@ -1,10 +1,123 @@
 import styled from "@emotion/styled/macro";
-import GlobalStyles from "../../styles/GlobalStyles";
-import GoogleLoginButton from "../../components/common/GoogleLoginButton";
 import Logo from "../../components/common/Logo";
 import InputBox from "../../components/common/InputBox";
-import RegisterButton from "../../components/common/RegisterButton";
 import React, { useState } from "react";
+import { commonAxios } from "../../utils/commonAxios";
+import { useNavigate } from "react-router-dom";
+
+function RegisterPage() {
+  const [email, setEmail] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [major, setMajor] = useState("");
+  const user = localStorage.getItem("googleId");
+  const navigate = useNavigate();
+  console.log(user);
+  console.log(nickname, major, email);
+
+  const postRegisterInfo = () => {
+    commonAxios
+      .post(`/mem/register`, {
+        headers: {
+          googleId: user,
+        },
+        nickname: nickname,
+        major: major,
+        email: email,
+      })
+      .then((res) => {
+        localStorage.setItem("authToken", true);
+        navigate("/");
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(nickname, major, email);
+        console.error(err);
+      });
+  };
+
+  return (
+    <PageContainer>
+      <Container>
+        <LogoContainer>
+          <Logo variant={150} />
+        </LogoContainer>
+        <Text>E-mail</Text>
+        <InputBox
+          value={email.title}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        <Text>Nickname</Text>
+        <InputBox
+          value={nickname.title}
+          onChange={(event) => setNickname(event.target.value)}
+        />
+        <Text>Major</Text>
+        <MajorContainer>
+          <MagorContent>
+            <input
+              type="radio"
+              value="AAI"
+              checked={major === "AAI"}
+              onChange={(event) => setMajor(event.target.value)}
+            />
+            <label>인공지능융합전공</label>
+          </MagorContent>
+          <MagorContent>
+            <input
+              type="radio"
+              value="BUS"
+              checked={major === "BUS"}
+              onChange={(event) => setMajor(event.target.value)}
+            />
+            <label>경영학과</label>
+          </MagorContent>
+          <MagorContent>
+            <input
+              type="radio"
+              value="COS"
+              checked={major === "COS"}
+              onChange={(event) => setMajor(event.target.value)}
+            />
+            <label>유학동양학과</label>
+          </MagorContent>
+          <MagorContent>
+            <input
+              type="radio"
+              value="ESM"
+              checked={major === "ESM"}
+              onChange={(event) => setMajor(event.target.value)}
+            />
+            <label>시스템경영공학과</label>
+          </MagorContent>
+        </MajorContainer>
+        <RegisterButton onClick={postRegisterInfo}>REGISTER</RegisterButton>
+        <WarningText>
+          회원 정보는 수정이 불가능하니 신중하게 입력해 주세요.
+        </WarningText>
+      </Container>
+    </PageContainer>
+  );
+}
+
+export default RegisterPage;
+
+export const RegisterButton = styled.button`
+  border-radius: 5px;
+  border: none;
+  background-color: ${({ theme }) => theme.color.btnGreen};
+  color: #ffffff;
+  height: 50px;
+  width: fit-content;
+  font-family: Inter, sans-serif;
+  font-style: italic;
+  font-size: 17px;
+  margin-bottom: 10px;
+  padding: 0 20px;
+  &:hover {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.color.deepBlue};
+  }
+`;
 
 const Text = styled.div`
   height: 40px;
@@ -16,7 +129,7 @@ const Text = styled.div`
   font-size: 40px;
   font-style: italic;
   color: ${({ theme }) => theme.color.deepBlue};
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `;
 
 const MajorContainer = styled.div`
@@ -60,66 +173,3 @@ const WarningText = styled.div`
   margin-top: 20px;
   color: ${({ theme }) => theme.color.btnOrange};
 `;
-
-function RegisterPage() {
-  const [major, setMajor] = useState();
-
-  return (
-    <PageContainer>
-      <Container>
-        <LogoContainer>
-          <Logo variant={150} />
-        </LogoContainer>
-        <Text>E-mail</Text>
-        <InputBox />
-        <Text>Nickname</Text>
-        <InputBox />
-        <Text>Major</Text>
-        <MajorContainer>
-          <MagorContent>
-            <input
-              type="radio"
-              value="AAI"
-              checked={major === "AAI"}
-              onChange={(event) => setMajor(event.target.value)}
-            />
-            <label>인공지능융합전공</label>
-          </MagorContent>
-          <MagorContent>
-            <input
-              type="radio"
-              value="BUS"
-              checked={major === "BUS"}
-              onChange={(event) => setMajor(event.target.value)}
-            />
-            <label>경영학과</label>
-          </MagorContent>
-          <MagorContent>
-            <input
-              type="radio"
-              value="COS"
-              checked={major === "COS"}
-              onChange={(event) => setMajor(event.target.value)}
-            />
-            <label>유학동양학과</label>
-          </MagorContent>
-          <MagorContent>
-            <input
-              type="radio"
-              value="ESM"
-              checked={major === "ESM"}
-              onChange={(event) => setMajor(event.target.value)}
-            />
-            <label>시스템경영공학과</label>
-          </MagorContent>
-        </MajorContainer>
-        <RegisterButton />
-        <WarningText>
-          회원 정보는 수정이 불가능하니 신중하게 입력해 주세요.
-        </WarningText>
-      </Container>
-    </PageContainer>
-  );
-}
-
-export default RegisterPage;
