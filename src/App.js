@@ -13,6 +13,8 @@ import ProfilePage from "./pages/ProfilePage";
 // import NotFound from "./components/common/NotFound";
 
 // Pages import
+import MainPage from "./pages/Main";
+import PostPage from "./pages/Post";
 
 const Container = styled.div`
   display: flex;
@@ -40,9 +42,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Router>
+
           <Routes>
             {/* 렌더링에 NavBar와 Footer 포함 */}
-            <Route path="/" element={<Layout />}/>
+            <Route path="/" element={<Layout children={<MainPage/>}/>}/>
+            <Route path="/notice" {<Layout children={<PostPage/>}/>}/>
             <Route path="/mem/profile" element={<Layout children={<ProfilePage/>}/>}/>
               {/* 렌더링에 NavBar와 Footer 제외  */}
             <Route path="/mem/login" element={<LoginPage />} />
@@ -51,6 +55,7 @@ function App() {
             {/* NotFound 페이지 */}
             {/* <Route path="*" exact={true} element={<NotFound />} /> */}
           </Routes>
+
         </Router>
       </ThemeProvider>
     </MuiThemeProvider>
