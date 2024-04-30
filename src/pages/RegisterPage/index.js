@@ -119,6 +119,13 @@ export const RegisterButton = styled.button`
   }
 `;
 
+const Registerdata = {
+	"nickname": "roopie",
+	"major": "COS",
+	"email": "pkl0912@naver.com"
+}
+
+
 const Text = styled.div`
   height: 40px;
   width: 100%;

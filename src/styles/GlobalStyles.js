@@ -15,6 +15,13 @@ export const globalStyles = (theme, isOpen) => css`
   html {
     style {
       @font-face {
+        font-family: "NanumBarunpen";
+        font-style: normal;
+        font-weight: normal;
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff') format('woff');
+      }
+    style {
+      @font-face {
         font-family: "GmarketSansMedium";
         font-style: normal;
         font-weight: normal;
@@ -22,10 +29,13 @@ export const globalStyles = (theme, isOpen) => css`
           format("woff");
       }
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap");
+
     }
+    
+     
     font-size: 16px;
     font-variation-settings: "slnt" 0;
-    font-family: "Inter", "GmarketSansMedium", "Pretendard Std Variable",
+    font-family: "NanumBarunpen", "Inter", "GmarketSansMedium", "Pretendard Std Variable",
       "Pretendard Std", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
       Roboto, "Helvetica Neue", "Segoe UI", "Apple Color Emoji",
       "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;

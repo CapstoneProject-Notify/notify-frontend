@@ -6,6 +6,7 @@ import { commonAxios } from "../../../utils/commonAxios";
 const GoogleLoginButton = () => {
   const navigate = useNavigate();
 
+
   const postLogin = (memId) => {
     commonAxios
       .post(`/mem/login`, { googleId: memId })
@@ -17,6 +18,7 @@ const GoogleLoginButton = () => {
         } else if (res.data.code == 200) {
           localStorage.setItem("authToken", true);
           navigate("/");
+
         }
         localStorage.setItem("googleId", memId);
       })

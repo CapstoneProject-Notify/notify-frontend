@@ -40,6 +40,7 @@ function NavBar() {
 
   console.log("isLoggedIn", isLoggedIn);
 
+
   return (
     <StyledNavBar>
       <NavBarContainer>

@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
 
 export const GreenBackground = styled.button`
-  border-radius: 5px;
+  border: none;
+  border-radius: 10px;
   background-color: ${({ theme }) => theme.color.btnGreen};
   color: #FFFFFF;
-  height: 46px;
-  width: fit-content;
-  padding: 7px;
-  font-family: Inter, sans-serif;
-  font-weight: 500;
-  font-style: italic;
+  height: 50px;
+  width: 118px;
+  
+  font-family: Inter;
+  font-weight: 100;
+  font-style: bold;
+  font-size: 23px;
+  margin-left: 30px;
 `;

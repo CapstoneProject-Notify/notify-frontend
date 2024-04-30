@@ -31,6 +31,7 @@ export const NavBarMenuContainer = styled.ul`
 `;
 
 export const NavBarMenuText = styled.li`
+  font-family: "GmarketSansMedium";
   padding-top: 5px;
   font-weight: 400;
   font-size: 12px;
@@ -45,6 +46,7 @@ export const NavBarMenuText = styled.li`
 `;
 
 export const NoticeMenuText = styled.div`
+  font-family: "GmarketSansMedium";
   width: 100%;
   height: 50px;
   :hover {

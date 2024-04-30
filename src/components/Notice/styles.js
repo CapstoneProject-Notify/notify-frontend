@@ -18,7 +18,8 @@ export const NoticeContainer = styled.div`
 
 export const Title = styled.div`
   color: black;
-  font-size: 20px;
+  font-size: 18px;
+  font-family: 'NanumBarunpen';
 `;
 
 export const RightContainer = styled.div`
@@ -28,7 +29,8 @@ export const RightContainer = styled.div`
 
 export const CreatedAt = styled.div`
   color: black;
-  font-size: 12px;
+  font-size: 13px;
+  font-family: 'NanumBarunpen';
 `;
 
 export const Like = styled.img`

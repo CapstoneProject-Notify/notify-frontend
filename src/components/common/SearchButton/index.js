@@ -3,7 +3,7 @@ import { GreenBackground } from "./styles";
 function SearchButton() {
   return (
     <GreenBackground>
-      Search
+      SEARCH
     </GreenBackground>
   );
 }

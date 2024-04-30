@@ -95,6 +95,7 @@ export const SearchContainer = styled.div`
   width: 100%;
   margin: 50px 0;
   border-bottom: 1px solid;
+  
 `;
 
 export const TitleText = styled.div`
@@ -102,10 +103,14 @@ export const TitleText = styled.div`
   text-align: left;
   font-size: 30px;
   margin-bottom: 20px;
+  font-family: "GmarketSansMedium";
 `;
 
 export const SearchInput = styled.div`
+  display: flex;
   width: 100%;
   text-align: right;
+  justify-content: flex-end;
   margin-bottom: 50px;
+  
 `;

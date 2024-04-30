@@ -19,6 +19,7 @@ export const FooterContainer = styled.div`
 `;
 
 export const FooterTextContainer = styled.div`
+  font-family: "GmarketSansMedium";
   display: flex;
   justify-content: center;
   font-size: 12px;
