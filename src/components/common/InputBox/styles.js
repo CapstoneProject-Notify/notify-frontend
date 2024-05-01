@@ -5,8 +5,11 @@ export const BoxBackground = styled.input`
   height: 50px;
   font-size: 20px;
   width: 100%;
-  border: none;
   padding: 0 15px;
   border-radius: 10px;
   margin-bottom: 30px;
+  border: none;
+  :focus {
+    outline: none;
+  }
 `;

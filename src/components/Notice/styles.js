@@ -14,12 +14,15 @@ export const NoticeContainer = styled.div`
       ? ({ theme }) => theme.color.lightOrange
       : ({ theme }) => theme.color.lightGreen};
   margin-bottom: 20px;
+  :focus {
+    cursor: pointer;
+  }
 `;
 
 export const Title = styled.div`
   color: black;
   font-size: 18px;
-  font-family: 'NanumBarunpen';
+  font-family: "NanumBarunpen";
 `;
 
 export const RightContainer = styled.div`
@@ -30,7 +33,7 @@ export const RightContainer = styled.div`
 export const CreatedAt = styled.div`
   color: black;
   font-size: 13px;
-  font-family: 'NanumBarunpen';
+  font-family: "NanumBarunpen";
 `;
 
 export const Like = styled.img`
