@@ -10,26 +10,31 @@ function RegisterPage() {
   const [nickname, setNickname] = useState("");
   const [major, setMajor] = useState("");
   const user = localStorage.getItem("googleId");
+  const customHeader = { googleId: user };
   const navigate = useNavigate();
   console.log(user);
   console.log(nickname, major, email);
 
   const postRegisterInfo = () => {
     commonAxios
-      .post(`/mem/register`, {
-        headers: {
-          googleId: user,
+      .post(
+        `/mem/register`,
+        {
+          nickname: nickname,
+          userMajor: major,
+          email: email,
         },
-        nickname: nickname,
-        major: major,
-        email: email,
-      })
+        {
+          headers: { googleId: user },
+        }
+      )
       .then((res) => {
         localStorage.setItem("authToken", true);
         navigate("/");
         console.log(res);
       })
       .catch((err) => {
+        localStorage.setItem("authToken", false);
         console.log(nickname, major, email);
         console.error(err);
       });
@@ -118,14 +123,6 @@ export const RegisterButton = styled.button`
     background-color: ${({ theme }) => theme.color.deepBlue};
   }
 `;
-
-const Registerdata = {
-	"nickname": "roopie",
-	"major": "COS",
-	"email": "pkl0912@naver.com"
-}
-
-
 const Text = styled.div`
   height: 40px;
   width: 100%;
