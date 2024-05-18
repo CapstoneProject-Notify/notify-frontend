@@ -14,11 +14,14 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { googleLogout } from "@react-oauth/google";
 import { useState, useEffect } from "react";
+import PopModal from "../PopModal";
 
 function NavBar() {
   const { location } = useLocation();
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("autoToken");
@@ -26,6 +29,15 @@ function NavBar() {
     setIsLoggedIn(false);
     googleLogout();
     navigate("/");
+  };
+
+  const handlePopModal = (e) => {
+    if (!isLoggedIn) {
+      e.preventDefault();
+      console.log("asfljdl");
+      setIsOpen(true);
+      setMessage("로그인을 해주세요!");
+    }
   };
 
   useEffect(() => {
@@ -39,7 +51,6 @@ function NavBar() {
   }, []);
 
   console.log("isLoggedIn", isLoggedIn);
-
 
   return (
     <StyledNavBar>
@@ -57,19 +68,19 @@ function NavBar() {
                 <Link to="/notice?type=com">
                   <NoticeMenu>학교</NoticeMenu>
                 </Link>
-                <Link to="/notice?type=aai">
+                <Link to="/notice?type=aai" onClick={handlePopModal}>
                   <NoticeMenu>학과</NoticeMenu>
                 </Link>
               </NoticeMenuContainer>
             </NoticeMenuText>
           </Link>
-          <Link to="/strap">
+          <Link to="/strap" onClick={handlePopModal}>
             <NavBarMenuText>스크랩</NavBarMenuText>
           </Link>
           <Link to="/phone">
             <NavBarMenuText>전화번호</NavBarMenuText>
           </Link>
-          <Link to="/mem/profile">
+          <Link to="/mem/profile" onClick={handlePopModal}>
             <NavBarMenuText>프로필</NavBarMenuText>
           </Link>
           {isLoggedIn ? (
@@ -81,6 +92,7 @@ function NavBar() {
           )}
         </NavBarMenuContainer>
       </NavBarContainer>
+      <PopModal isOpen={isOpen} setIsOpen={setIsOpen} message={message} />
     </StyledNavBar>
   );
 }
