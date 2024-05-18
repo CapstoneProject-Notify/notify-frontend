@@ -1,4 +1,4 @@
-import { PaginationContainer, Nav, PageButton } from "./styles";
+import { PaginationContainer, PageButton } from "./styles";
 
 function Pagination({ limit, page, setPage, totalPages }) {
   const numPages = Math.ceil(totalPages / limit);
@@ -11,9 +11,13 @@ function Pagination({ limit, page, setPage, totalPages }) {
         .fill()
         .map((_, i) => {
           return (
-            <PageButton key={i + 1} onClick={() => setPage(i + 1)}>
+            <PageButton
+              key={i + 1}
+              onClick={() => setPage(i + 1)}
+              aria-current={page === i + 1 ? "page" : undefined}
+            >
               {i + 1}
-              {console.log(i + 1)}
+              {console.log("hi", page == i + 1)}
             </PageButton>
           );
         })}
