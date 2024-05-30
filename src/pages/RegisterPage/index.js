@@ -10,7 +10,6 @@ function RegisterPage() {
   const [nickname, setNickname] = useState("");
   const [major, setMajor] = useState("");
   const user = localStorage.getItem("googleId");
-  const customHeader = { googleId: user };
   const navigate = useNavigate();
   console.log(user);
   console.log(nickname, major, email);
@@ -30,6 +29,7 @@ function RegisterPage() {
       )
       .then((res) => {
         localStorage.setItem("authToken", true);
+        localStorage.setItem("major", major);
         navigate("/");
         console.log(res);
       })
