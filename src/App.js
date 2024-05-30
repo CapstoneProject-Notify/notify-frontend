@@ -11,6 +11,7 @@ import Footer from "./components/common/Footer";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
+import PhonePage from "./pages/PhonePage";
 // import NotFound from "./components/common/NotFound";
 
 // Pages import
@@ -56,6 +57,10 @@ function App() {
               <Route
                 path="/mem/profile"
                 element={<Layout children={<ProfilePage />} />}
+              />
+              <Route
+                path="/phone"
+                element={<Layout children={<PhonePage />} />}
               />
               {/* 렌더링에 NavBar와 Footer 제외  */}
               <Route path="/mem/login" element={<LoginPage />} />
