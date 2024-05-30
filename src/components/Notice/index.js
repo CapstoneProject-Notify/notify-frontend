@@ -17,25 +17,47 @@ function Notice({ data, type, like }) {
 
   const handleScrapClick = (e) => {
     e.stopPropagation();
-    commonAxios
-      .post(
-        `/scrap`,
-        {
-          type: major,
-          googleId: user,
-          noticeId: data.noticeId,
-        },
-        {
-          googleId: user,
-        }
-      )
-      .then((res) => {
-        setIsScrapped(!isScrapped);
-        console.log(res);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    if (data.isScrapped) {
+      commonAxios
+        .delete(
+          `/scrap`,
+          {
+            type: major,
+            googleId: user,
+            noticeId: data.noticeId,
+          },
+          {
+            googleId: user,
+          }
+        )
+        .then((res) => {
+          setIsScrapped(!isScrapped);
+          console.log(res);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      commonAxios
+        .post(
+          `/scrap`,
+          {
+            type: major,
+            googleId: user,
+            noticeId: data.noticeId,
+          },
+          {
+            googleId: user,
+          }
+        )
+        .then((res) => {
+          setIsScrapped(!isScrapped);
+          console.log(res);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
   return (
     <NoticeContainer
