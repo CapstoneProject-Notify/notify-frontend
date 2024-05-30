@@ -10,6 +10,7 @@ import TestData from "../../constants/test.json";
 function MainPage() {
   const [newPost, setNewPost] = useState([]);
   const data = TestData;
+  const user = localStorage.getItem("googleId");
 
   const getPost = () => {
     commonAxios

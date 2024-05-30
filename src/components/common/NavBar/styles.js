@@ -54,7 +54,7 @@ export const NoticeMenuText = styled.div`
   }
 `;
 
-export const NoticeMenuContainer = styled.ul`
+export const NoticeMenuContainer = styled.div`
   position: absolute;
   display: none;
   width: max-content;
@@ -65,7 +65,7 @@ export const NoticeMenuContainer = styled.ul`
   }
 `;
 
-export const NoticeMenu = styled.li`
+export const NoticeMenu = styled.div`
   width: 150px;
   height: 40px;
   font-weight: 400;

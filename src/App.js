@@ -12,6 +12,9 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import PhonePage from "./pages/PhonePage";
+
+
+
 // import NotFound from "./components/common/NotFound";
 
 // Pages import
@@ -46,6 +49,7 @@ function App() {
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
+
           <Router>
             <Routes>
               {/* 렌더링에 NavBar와 Footer 포함 */}

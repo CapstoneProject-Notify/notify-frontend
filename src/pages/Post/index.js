@@ -7,61 +7,49 @@ import styled from "@emotion/styled/macro";
 import { commonAxios } from "../../utils/commonAxios";
 import { useState } from "react";
 import NoticeList from "../../components/NoticeList";
-import Pagenation from "../../components/Pagenation";
 import { useLocation } from "react-router-dom";
+import data from "../../constants/test.json";
 
-const data = {
-  code: 200,
-  message: "공지사항 조회 성공",
-  data: {
-    page: 1,
-    totalPages: 41,
-    notices: [
-      {
-        noticeId: 1,
-        title: "장학금안내",
-        noticeDate: "2024-02-02",
-        isScrapped: false,
-        url: "www.aaa.com",
-      },
-      {
-        noticeId: 1,
-        title: "장학금",
-        noticeDate: "2024-02-02",
-        isScrapped: false,
-        url: "www.aaa.com",
-      },
-      {
-        noticeId: 1,
-        title: "장학",
-        noticeDate: "2024-02-02",
-        isScrapped: false,
-        url: "www.aaa.com",
-      },
-    ],
-  },
-};
+import { Link } from "react-router-dom";
+import Pagination from "../../components/Pagination";
+// import PaginationItem from "@mui/material/PaginationItem";
 
 function PostPage() {
-  const [postInfo, setPostInfo] = useState([]);
+  const [postInfo, setPostInfo] = useState(data.data);
   const [page, setPage] = useState(1);
+  const limit = 10;
+  const offset = (page - 1) * limit;
+  const totalPages = postInfo.totalPages;
   const location = useLocation();
   const type = location.search;
 
-  const getPost = () => {
-    commonAxios
-      .get(`/notice${type}&page=${page}`, {
-        // headers: {
-        //     Authorization: `Bearer ${JWT token}`
-        // }
-      })
-      .then((res) => {
-        setPostInfo(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  //   const getPost = () => {
+  //     commonAxios
+  //       .get(`/notice${type}&page=${page}`, {
+  //         // headers: {
+  //         //     Authorization: `Bearer ${JWT token}`
+  //         // }
+  //       })
+  //       .then((res) => {
+  //         setPostInfo(res.data);
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //       });
+  //   };
+
+  const postData = (post) => {
+    if (post) {
+      let result = post.slice(offset, offset + limit);
+      return result;
+    }
   };
+
+  const handlePageChange = (event) => {
+    const pageIndex = Number(event.target.outerText);
+    setPage(pageIndex);
+  };
+
   return (
     <>
       <AppLayout>
@@ -74,16 +62,24 @@ function PostPage() {
             <SearchButton></SearchButton>
           </SearchInput>
         </SearchContainer>
-        {/* <NoticeList info={postInfo.notices} />
-        <Pagenation
-          limit={postInfo.notices.length}
+        <NoticeList info={postData(postInfo.notices)} />
+        <Pagination
+          limit={limit}
           page={page}
           setPage={setPage}
-          totalPages={data.totalPages}
-        /> */}
-        <Notice data={data.data.notices[0]} />
-        <Notice data={data.data.notices[1]} />
-        <Notice data={data.data.notices[2]} />
+          totalPages={totalPages}
+        />
+        {/* <PaginationLink /> */}
+        {/* <PaginationContainer>
+          {location && (
+            <Pagination
+            //   page={page}
+            //   count={totalPages}
+            //   defaultPage={1}
+            //   onChange={handlePageChange}
+            />
+          )}
+        </PaginationContainer> */}
       </AppLayout>
     </>
   );
@@ -95,7 +91,6 @@ export const SearchContainer = styled.div`
   width: 100%;
   margin: 50px 0;
   border-bottom: 1px solid;
-  
 `;
 
 export const TitleText = styled.div`
@@ -112,5 +107,4 @@ export const SearchInput = styled.div`
   text-align: right;
   justify-content: flex-end;
   margin-bottom: 50px;
-  
 `;
