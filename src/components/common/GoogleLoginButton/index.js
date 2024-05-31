@@ -13,9 +13,9 @@ const GoogleLoginButton = () => {
         console.log(res);
         if (res.data.code == 404) {
           navigate("/mem/register");
-          localStorage.setItem("authToken", false);
+          localStorage.setItem("token", false);
         } else if (res.data.code == 200) {
-          localStorage.setItem("authToken", true);
+          localStorage.setItem("token", true);
           navigate("/");
         }
         localStorage.setItem("googleId", memId);

@@ -14,6 +14,7 @@ function MainPage() {
   const memId = user ? user : "";
 
   const getPost = () => {
+    console.log(typeof memId);
     commonAxios
       .get(`/notice?type=com&page=1`, {
         headers: { googleId: memId },
@@ -43,9 +44,9 @@ function MainPage() {
         </TitleContainer>
         {newPost && newPost.length > 0 ? (
           <>
-            <Notice data={newPost[0]} type={true} />
-            <Notice data={newPost[1]} type={true} />
-            <Notice data={newPost[2]} type={true} />
+            <Notice data={newPost[0]} type="COM" />
+            <Notice data={newPost[1]} type="COM" />
+            <Notice data={newPost[2]} type="COM" />
           </>
         ) : (
           ""

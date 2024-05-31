@@ -1,5 +1,8 @@
 import axios from "axios";
 
+// const memId = localStorage.getItem("googleId");
+// const user = memId ? memId : "";
+
 const commonAxios = axios.create({
   baseURL: process.env.REACT_APP_API_ENDPOINT,
   withCredentials: true,

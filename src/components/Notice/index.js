@@ -8,37 +8,45 @@ import {
 import FillLikeIcon from "../../assets/fill_like.svg";
 import NotFillLikeIcon from "../../assets/not_fill_like.svg";
 import { commonAxios } from "../../utils/commonAxios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PopModal from "../common/PopModal";
 
-function Notice({ data, type, like }) {
+function Notice({ data, type }) {
+  //   const scrapped = scrap ? true : data.isScrapped;
   const [isScrapped, setIsScrapped] = useState(data.isScrapped);
   const user = localStorage.getItem("googleId");
   const major = localStorage.getItem("major");
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log("user", user);
+  console.log("scrap", isScrapped, data.isScrapped);
+
   const handleScrapClick = (e) => {
     e.stopPropagation();
     if (!user) {
       setIsOpen(true);
       setMessage("로그인이 필요한 기능입니다.");
+      e.stopPropagation();
     }
     if (data.isScrapped) {
       commonAxios
         .delete(
           `/scrap`,
           {
-            type: major,
+            type: type,
             googleId: user,
             noticeId: data.noticeId,
           },
           {
-            googleId: user,
+            headers: {
+              googleId: user,
+            },
           }
         )
         .then((res) => {
           setIsScrapped(!isScrapped);
+          e.stopPropagation();
           console.log(res);
         })
         .catch((err) => {
@@ -49,7 +57,7 @@ function Notice({ data, type, like }) {
         .post(
           `/scrap`,
           {
-            type: major,
+            type: type,
             googleId: user,
             noticeId: data.noticeId,
           },
@@ -59,6 +67,7 @@ function Notice({ data, type, like }) {
         )
         .then((res) => {
           setIsScrapped(!isScrapped);
+          e.stopPropagation();
           console.log(res);
         })
         .catch((err) => {
@@ -66,6 +75,7 @@ function Notice({ data, type, like }) {
         });
     }
   };
+
   return (
     <NoticeContainer
       onClick={() =>
@@ -76,7 +86,7 @@ function Notice({ data, type, like }) {
       <Title>{data.title}</Title>
       <RightContainer>
         <CreatedAt>
-          {type ? "작성일 :" : ""} {data.noticeDate}
+          {"작성일 :"} {data.noticeDate}
         </CreatedAt>
         <Like
           src={isScrapped ? FillLikeIcon : NotFillLikeIcon}

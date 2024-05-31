@@ -17,45 +17,29 @@ import Pagination from "../../components/Pagination";
 function PostPage() {
   const [postInfo, setPostInfo] = useState(data.data);
   const [page, setPage] = useState(1);
-  //   const limit = 10;
-  //   const offset = (page - 1) * limit;
   const totalPages = postInfo.totalPages;
   const location = useLocation();
-  const type = location.search;
+  const typeUrl = location.search;
   const user = localStorage.getItem("googleId");
   const memId = user ? user : "";
+  const major = localStorage.getItem("major");
+  const type = "?type=com" ? "COM" : major;
 
   const getScrap = () => {
     commonAxios
-      .get(`/notice${type}&page=${page}`, {
+      .get(`/notice${typeUrl}&page=${page}`, {
         headers: { googleId: memId },
       })
       .then((res) => {
         setPostInfo(res.data.data);
-        // totalPages = res.data.data.
         console.log(res);
-        console.log(res.data.data.notices);
-        // console.log(res.data.notices);
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-  //   const postData = (post) => {
-  //     if (post) {
-  //       let result = post.slice(offset, offset + limit);
-  //       return result;
-  //     }
-  //   };
-
-  //   const handlePageChange = (event) => {
-  //     const pageIndex = Number(event.target.outerText);
-  //     setPage(pageIndex);
-  //   };
-
   useEffect(() => {
-    // handlePageChange();
     getScrap();
     console.log("hihi");
   }, [page]);
@@ -65,7 +49,7 @@ function PostPage() {
       <AppLayout>
         <SearchContainer>
           <TitleText>
-            {type == "?type=com" ? "School Post" : "Department Post"}
+            {typeUrl == "?type=com" ? "School Post" : "Department Post"}
           </TitleText>
           <SearchInput>
             <SearchBox></SearchBox>
@@ -75,7 +59,7 @@ function PostPage() {
         {console.log(postInfo, totalPages, page)}
         {postInfo && postInfo.notices.length > 0 ? (
           <>
-            <NoticeList info={postInfo.notices} />
+            <NoticeList info={postInfo.notices} type={type} />
             <Pagination page={page} setPage={setPage} totalPages={totalPages} />
           </>
         ) : (

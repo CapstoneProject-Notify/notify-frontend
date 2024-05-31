@@ -26,6 +26,7 @@ function NavBar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("googleId");
+    localStorage.removeItem("major");
     setIsLoggedIn(false);
     googleLogout();
     navigate("/");
@@ -33,7 +34,7 @@ function NavBar() {
 
   const handlePopModal = (e) => {
     if (!isLoggedIn) {
-      e.preventDefault();
+      //   e.preventDefault();
       console.log("asfljdl");
       setIsOpen(true);
       setMessage("로그인이 필요한 기능입니다.");
