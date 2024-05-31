@@ -24,7 +24,7 @@ function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem("autoToken");
+    localStorage.removeItem("token");
     localStorage.removeItem("googleId");
     setIsLoggedIn(false);
     googleLogout();
@@ -36,18 +36,18 @@ function NavBar() {
       e.preventDefault();
       console.log("asfljdl");
       setIsOpen(true);
-      setMessage("로그인을 해주세요!");
+      setMessage("로그인이 필요한 기능입니다.");
     }
   };
 
   useEffect(() => {
-    const authToken = /true/i.test(localStorage.getItem("authToken"));
-    setIsLoggedIn(authToken);
-    if (authToken === false) {
+    const token = /true/i.test(localStorage.getItem("token"));
+    setIsLoggedIn(token);
+    if (token === false) {
       googleLogout();
       setIsLoggedIn(false);
     }
-    console.log("authToken", authToken);
+    console.log("token", token);
   }, []);
 
   console.log("isLoggedIn", isLoggedIn);

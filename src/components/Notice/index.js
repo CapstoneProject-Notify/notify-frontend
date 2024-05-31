@@ -22,7 +22,7 @@ function Notice({ data, type, like }) {
     e.stopPropagation();
     if (!user) {
       setIsOpen(true);
-      setMessage("로그인을 해주세요!");
+      setMessage("로그인이 필요한 기능입니다.");
     }
     if (data.isScrapped) {
       commonAxios

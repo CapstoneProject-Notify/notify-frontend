@@ -1,5 +1,3 @@
-import styled from "@emotion/styled/macro";
-
 export const customModalStyles = {
   overlay: {
     backgroundColor: " rgba(0, 0, 0, 0.4)",
@@ -18,16 +16,31 @@ export const customModalStyles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    borderRadius: "10px",
+    borderRadius: "30px",
     boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
     backgroundColor: "white",
     justifyContent: "center",
+    display: "flex",
+    alignItems: "center",
     overflow: "auto",
+    fontSize: "20px",
+    fontFamily: "Inter, sans-serif",
+    flexDirection: "column",
   },
 };
 
-export const modalContainer = styled.div`
-  width: 200px;
-  height: 100px;
-  background-color: red;
-`;
+export const customBtnStyles = {
+  marginTop: "15px",
+  borderRadius: "10px",
+  border: "none",
+  backgroundColor: "#FF6C0F",
+  color: "#ffffff",
+  height: "30px",
+  fontSize: "20px",
+  width: "70px",
+};
+
+export const customImgStyles = {
+  height: "30px",
+  marginBottom: "10px",
+};

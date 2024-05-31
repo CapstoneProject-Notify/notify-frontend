@@ -1,6 +1,6 @@
 import ReactModal from "react-modal";
-import { customModalStyles } from "./styles";
-import { modalContainer } from "./styles";
+import { customModalStyles, customBtnStyles, customImgStyles } from "./styles";
+import NanureLogo from "../../../assets/logo.png";
 
 function PopModal({ isOpen, setIsOpen, message }) {
   const modal = <modalContainer></modalContainer>;
@@ -13,7 +13,11 @@ function PopModal({ isOpen, setIsOpen, message }) {
       contentLabel="Pop up Message"
       //   shouldCloseOnOverlayClick={false}
     >
-      {modal}
+      <img src={NanureLogo} alt="nanure-logo" style={customImgStyles}></img>
+      <div>{message}</div>
+      <button style={customBtnStyles} onClick={() => setIsOpen(false)}>
+        close
+      </button>
     </ReactModal>
   );
 }
