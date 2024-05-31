@@ -1,7 +1,8 @@
 import { PaginationContainer, PageButton } from "./styles";
 
-function Pagination({ limit, page, setPage, totalPages }) {
-  const numPages = Math.ceil(totalPages / limit);
+function Pagination({ page, setPage, totalPages }) {
+  const numPages = totalPages;
+  //   const numPages = Math.ceil(totalPages / limit);
   return (
     <PaginationContainer>
       <PageButton onClick={() => setPage(page - 1)} disabled={page === 1}>
