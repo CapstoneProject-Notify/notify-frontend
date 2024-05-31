@@ -9,14 +9,21 @@ import FillLikeIcon from "../../assets/fill_like.svg";
 import NotFillLikeIcon from "../../assets/not_fill_like.svg";
 import { commonAxios } from "../../utils/commonAxios";
 import { useState } from "react";
+import PopModal from "../common/PopModal";
 
 function Notice({ data, type, like }) {
   const [isScrapped, setIsScrapped] = useState(data.isScrapped);
   const user = localStorage.getItem("googleId");
   const major = localStorage.getItem("major");
+  const [message, setMessage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleScrapClick = (e) => {
     e.stopPropagation();
+    if (!user) {
+      setIsOpen(true);
+      setMessage("로그인을 해주세요!");
+    }
     if (data.isScrapped) {
       commonAxios
         .delete(
@@ -75,6 +82,7 @@ function Notice({ data, type, like }) {
           src={isScrapped ? FillLikeIcon : NotFillLikeIcon}
           onClick={handleScrapClick}
         />
+        <PopModal isOpen={isOpen} setIsOpen={setIsOpen} message={message} />
       </RightContainer>
     </NoticeContainer>
   );
