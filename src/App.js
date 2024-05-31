@@ -13,13 +13,12 @@ import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import PhonePage from "./pages/PhonePage";
 
-
-
 // import NotFound from "./components/common/NotFound";
 
 // Pages import
 import MainPage from "./pages/Main";
 import PostPage from "./pages/Post";
+import ScrapPage from "./pages/Scrap";
 
 const clientId = `${process.env.REACT_APP_GOOGLE_CLIENT_ID}`;
 
@@ -57,6 +56,10 @@ function App() {
               <Route
                 path="/notice"
                 element={<Layout children={<PostPage />} />}
+              />
+              <Route
+                path="/scrap"
+                element={<Layout children={<ScrapPage />} />}
               />
               <Route
                 path="/mem/profile"

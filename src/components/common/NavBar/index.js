@@ -74,7 +74,7 @@ function NavBar() {
               </NoticeMenuContainer>
             </NoticeMenuText>
           </Link>
-          <Link to="/strap" onClick={handlePopModal}>
+          <Link to="/scrap">
             <NavBarMenuText>스크랩</NavBarMenuText>
           </Link>
           <Link to="/phone">

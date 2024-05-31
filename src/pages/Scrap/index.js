@@ -14,59 +14,37 @@ import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 // import PaginationItem from "@mui/material/PaginationItem";
 
-function PostPage() {
+function ScrapPage() {
   const [postInfo, setPostInfo] = useState(data.data);
   const [page, setPage] = useState(1);
-  //   const limit = 10;
-  //   const offset = (page - 1) * limit;
   const totalPages = postInfo.totalPages;
   const location = useLocation();
-  const type = location.search;
   const user = localStorage.getItem("googleId");
   const memId = user ? user : "";
 
-  const getScrap = () => {
+  const getPost = () => {
     commonAxios
-      .get(`/notice${type}&page=${page}`, {
+      .get(`/scrap?page=${page}`, {
         headers: { googleId: memId },
       })
       .then((res) => {
         setPostInfo(res.data.data);
-        // totalPages = res.data.data.
         console.log(res);
-        console.log(res.data.data.notices);
-        // console.log(res.data.notices);
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-  //   const postData = (post) => {
-  //     if (post) {
-  //       let result = post.slice(offset, offset + limit);
-  //       return result;
-  //     }
-  //   };
-
-  //   const handlePageChange = (event) => {
-  //     const pageIndex = Number(event.target.outerText);
-  //     setPage(pageIndex);
-  //   };
-
   useEffect(() => {
-    // handlePageChange();
-    getScrap();
-    console.log("hihi");
+    getPost();
   }, [page]);
 
   return (
     <>
       <AppLayout>
         <SearchContainer>
-          <TitleText>
-            {type == "?type=com" ? "School Post" : "Department Post"}
-          </TitleText>
+          <TitleText>{"Scrap Post"}</TitleText>
           <SearchInput>
             <SearchBox></SearchBox>
             <SearchButton></SearchButton>
@@ -79,14 +57,14 @@ function PostPage() {
             <Pagination page={page} setPage={setPage} totalPages={totalPages} />
           </>
         ) : (
-          console.log("by")
+          console.log("bye")
         )}
       </AppLayout>
     </>
   );
 }
 
-export default PostPage;
+export default ScrapPage;
 
 export const SearchContainer = styled.div`
   width: 100%;
