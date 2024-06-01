@@ -65,7 +65,6 @@ function NavBar() {
           </NavBarLogoContainer>
         </Link>
         <NavBarMenuContainer>
-          {/* <Link to={location}> */}
           <NoticeMenuText>
             <Link to={location}>
               <NavBarMenuText>공지사항</NavBarMenuText>
@@ -79,7 +78,6 @@ function NavBar() {
               </Link>
             </NoticeMenuContainer>
           </NoticeMenuText>
-          {/* </Link> */}
           <Link to="/scrap" onClick={handlePopModal}>
             <NavBarMenuText>스크랩</NavBarMenuText>
           </Link>

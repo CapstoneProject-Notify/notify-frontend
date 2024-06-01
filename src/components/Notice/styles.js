@@ -20,9 +20,13 @@ export const NoticeContainer = styled.div`
 `;
 
 export const Title = styled.div`
+  width: 80%;
   color: black;
   font-size: 18px;
   font-family: "NanumBarunpen";
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const RightContainer = styled.div`
