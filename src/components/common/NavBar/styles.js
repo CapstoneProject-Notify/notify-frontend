@@ -35,7 +35,7 @@ export const NavBarMenuText = styled.li`
   padding-top: 5px;
   font-weight: 400;
   font-size: 12px;
-  min-width: 80px;
+  min-width: 100px;
   line-height: 50px;
   text-align: center;
   padding: 0px 20px;

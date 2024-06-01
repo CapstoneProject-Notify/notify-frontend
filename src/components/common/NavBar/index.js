@@ -22,6 +22,9 @@ function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const major = localStorage.getItem("major").toLowerCase();
+
+  console.log("navbar", major);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -62,20 +65,22 @@ function NavBar() {
           </NavBarLogoContainer>
         </Link>
         <NavBarMenuContainer>
-          <Link to={location}>
-            <NoticeMenuText>
+          {/* <Link to={location}> */}
+          <NoticeMenuText>
+            <Link to={location}>
               <NavBarMenuText>공지사항</NavBarMenuText>
-              <NoticeMenuContainer>
-                <Link to="/notice?type=com">
-                  <NoticeMenu>학교</NoticeMenu>
-                </Link>
-                <Link to="/notice?type=aai" onClick={handlePopModal}>
-                  <NoticeMenu>학과</NoticeMenu>
-                </Link>
-              </NoticeMenuContainer>
-            </NoticeMenuText>
-          </Link>
-          <Link to="/scrap">
+            </Link>
+            <NoticeMenuContainer>
+              <Link to="/notice?type=com">
+                <NoticeMenu>학교</NoticeMenu>
+              </Link>
+              <Link to={`/notice?type=${major}`} onClick={handlePopModal}>
+                <NoticeMenu>학과</NoticeMenu>
+              </Link>
+            </NoticeMenuContainer>
+          </NoticeMenuText>
+          {/* </Link> */}
+          <Link to="/scrap" onClick={handlePopModal}>
             <NavBarMenuText>스크랩</NavBarMenuText>
           </Link>
           <Link to="/phone">

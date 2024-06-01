@@ -19,10 +19,10 @@ function PostPage() {
   const user = localStorage.getItem("googleId");
   const memId = user ? user : "";
   const major = localStorage.getItem("major");
-  const type = "?type=com" ? "COM" : major;
+  const type = typeUrl == "?type=com" ? "COM" : major;
   const [scrap, setScrap] = useState(false);
 
-  const getScrap = () => {
+  const getNotice = () => {
     commonAxios
       .get(`/notice${typeUrl}&page=${page}`, {
         headers: { googleId: memId },
@@ -37,7 +37,7 @@ function PostPage() {
   };
 
   useEffect(() => {
-    getScrap();
+    getNotice();
   }, [page, scrap]);
 
   return (

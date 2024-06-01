@@ -225,7 +225,9 @@ function ProfilePage() {
     if (withdrawal) {
       commonAxios
         .delete(`/mem/delete`, {
-          googleId: user,
+          data: {
+            googleId: user,
+          },
         })
         .then((res) => {
           console.log(res);

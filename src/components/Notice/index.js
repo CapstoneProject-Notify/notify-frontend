@@ -73,9 +73,7 @@ function Notice({ data, type, scrap, setScrap }) {
 
   return (
     <NoticeContainer
-      onClick={() =>
-        window.open("https://" + data.url, "_blank", "noopener, noreferrer")
-      }
+      onClick={() => window.open(data.url, "_blank", "noopener, noreferrer")}
       isScrapped={data.isScrapped}
     >
       <Title>{data.title}</Title>
