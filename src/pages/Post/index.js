@@ -38,7 +38,7 @@ function PostPage() {
 
   useEffect(() => {
     getNotice();
-  }, [page, scrap]);
+  }, [page, scrap, typeUrl]);
 
   return (
     <>

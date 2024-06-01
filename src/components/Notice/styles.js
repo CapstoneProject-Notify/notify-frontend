@@ -38,6 +38,9 @@ export const CreatedAt = styled.div`
   color: black;
   font-size: 13px;
   font-family: "NanumBarunpen";
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Like = styled.img`

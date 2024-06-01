@@ -1,8 +1,8 @@
+import styled from "@emotion/styled/macro";
 import ImageSlider from "../../components/ImageSlider";
 import Notice from "../../components/Notice";
 import AppLayout from "../../components/common/AppLayout";
 import Title from "../../components/common/Title";
-import styled from "@emotion/styled/macro";
 import { commonAxios } from "../../utils/commonAxios";
 import { useEffect, useState } from "react";
 
@@ -13,7 +13,6 @@ function MainPage() {
   const memId = user ? user : "";
 
   const getPost = () => {
-    console.log(typeof memId);
     commonAxios
       .get(`/notice?type=com&page=1`, {
         headers: { googleId: memId },
