@@ -21,53 +21,53 @@ function Notice({ data, type, scrap, setScrap }) {
     if (!user) {
       setIsOpen(true);
       setMessage("로그인이 필요한 기능입니다.");
-      e.stopPropagation();
-    }
-    if (data.isScrapped) {
-      commonAxios
-        .delete(
-          `/scrap`,
-          {
-            data: {
+    } else {
+      if (data.isScrapped) {
+        commonAxios
+          .delete(
+            `/scrap`,
+            {
+              data: {
+                type: type,
+                googleId: user,
+                noticeId: data.noticeId,
+              },
+            },
+            {
+              googleId: user,
+            }
+          )
+          .then((res) => {
+            setScrap(!scrap);
+            e.stopPropagation();
+            console.log(res);
+          })
+          .catch((err) => {
+            console.error(err);
+            console.log("notice", type, user, data.noticeId);
+          });
+      } else {
+        commonAxios
+          .post(
+            `/scrap`,
+            {
               type: type,
               googleId: user,
               noticeId: data.noticeId,
             },
-          },
-          {
-            googleId: user,
-          }
-        )
-        .then((res) => {
-          setScrap(!scrap);
-          e.stopPropagation();
-          console.log(res);
-        })
-        .catch((err) => {
-          console.error(err);
-          console.log("notice", type, user, data.noticeId);
-        });
-    } else {
-      commonAxios
-        .post(
-          `/scrap`,
-          {
-            type: type,
-            googleId: user,
-            noticeId: data.noticeId,
-          },
-          {
-            googleId: user,
-          }
-        )
-        .then((res) => {
-          setScrap(!scrap);
-          e.stopPropagation();
-          console.log(res);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+            {
+              googleId: user,
+            }
+          )
+          .then((res) => {
+            setScrap(!scrap);
+            e.stopPropagation();
+            console.log(res);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
     }
   };
 

@@ -22,7 +22,7 @@ function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const major = localStorage.getItem("major").toLowerCase();
+  const major = isLoggedIn ? localStorage.getItem("major").toLowerCase() : "";
 
   console.log("navbar", major);
 
@@ -37,8 +37,8 @@ function NavBar() {
 
   const handlePopModal = (e) => {
     if (!isLoggedIn) {
+      //   e.stopPropagation();
       //   e.preventDefault();
-      console.log("asfljdl");
       setIsOpen(true);
       setMessage("로그인이 필요한 기능입니다.");
     }
