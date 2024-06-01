@@ -24,6 +24,7 @@ function PostPage() {
   const memId = user ? user : "";
   const major = localStorage.getItem("major");
   const type = "?type=com" ? "COM" : major;
+  const [scrap, setScrap] = useState(false);
 
   const getScrap = () => {
     commonAxios
@@ -59,8 +60,17 @@ function PostPage() {
         {console.log(postInfo, totalPages, page)}
         {postInfo && postInfo.notices.length > 0 ? (
           <>
-            <NoticeList info={postInfo.notices} type={type} />
-            <Pagination page={page} setPage={setPage} totalPages={totalPages} />
+            <NoticeList
+              info={postInfo.notices}
+              type={type}
+              setScrap={setScrap}
+            />
+            <Pagination
+              page={page}
+              scrap={scrap}
+              setPage={setPage}
+              totalPages={totalPages}
+            />
           </>
         ) : (
           console.log("by")

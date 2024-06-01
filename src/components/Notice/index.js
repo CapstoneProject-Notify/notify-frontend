@@ -11,16 +11,14 @@ import { commonAxios } from "../../utils/commonAxios";
 import { useEffect, useState } from "react";
 import PopModal from "../common/PopModal";
 
-function Notice({ data, type }) {
-  //   const scrapped = scrap ? true : data.isScrapped;
-  const [isScrapped, setIsScrapped] = useState(data.isScrapped);
+function Notice({ data, type, scrap, setScrap }) {
+  const [isScrapped, setIsScrapped] = useState(data.isScrapped ? true : false);
   const user = localStorage.getItem("googleId");
-  const major = localStorage.getItem("major");
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log("user", user);
-  console.log("scrap", isScrapped, data.isScrapped);
+  console.log("notice!!", type, user, data.noticeId);
+  //   console.log("scrap", isScrapped, data.isScrapped);
 
   const handleScrapClick = (e) => {
     e.stopPropagation();
@@ -34,23 +32,25 @@ function Notice({ data, type }) {
         .delete(
           `/scrap`,
           {
-            type: type,
-            googleId: user,
-            noticeId: data.noticeId,
+            data: {
+              type: type,
+              googleId: user,
+              noticeId: data.noticeId,
+            },
           },
           {
-            headers: {
-              googleId: user,
-            },
+            googleId: user,
           }
         )
         .then((res) => {
           setIsScrapped(!isScrapped);
+          setScrap(!scrap);
           e.stopPropagation();
           console.log(res);
         })
         .catch((err) => {
           console.error(err);
+          console.log("notice", type, user, data.noticeId);
         });
     } else {
       commonAxios
@@ -67,6 +67,7 @@ function Notice({ data, type }) {
         )
         .then((res) => {
           setIsScrapped(!isScrapped);
+          setScrap(!scrap);
           e.stopPropagation();
           console.log(res);
         })
@@ -76,12 +77,17 @@ function Notice({ data, type }) {
     }
   };
 
+  //   useEffect(() => {
+  //     setIsScrapped(data.isScrapped);
+  //     console.log("hihi");
+  //   }, [isScrapped]);
+
   return (
     <NoticeContainer
       onClick={() =>
         window.open("https://" + data.url, "_blank", "noopener, noreferrer")
       }
-      isScrapped={isScrapped}
+      isScrapped={data.isScrapped}
     >
       <Title>{data.title}</Title>
       <RightContainer>
@@ -89,7 +95,7 @@ function Notice({ data, type }) {
           {"작성일 :"} {data.noticeDate}
         </CreatedAt>
         <Like
-          src={isScrapped ? FillLikeIcon : NotFillLikeIcon}
+          src={data.isScrapped ? FillLikeIcon : NotFillLikeIcon}
           onClick={handleScrapClick}
         />
         <PopModal isOpen={isOpen} setIsOpen={setIsOpen} message={message} />

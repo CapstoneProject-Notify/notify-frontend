@@ -32,7 +32,6 @@ function MainPage() {
 
   useEffect(() => {
     getPost();
-    console.log("hihi");
   }, []);
 
   return (
