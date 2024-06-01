@@ -12,13 +12,9 @@ import { useEffect, useState } from "react";
 import PopModal from "../common/PopModal";
 
 function Notice({ data, type, scrap, setScrap }) {
-  const [isScrapped, setIsScrapped] = useState(data.isScrapped ? true : false);
-  const user = localStorage.getItem("googleId");
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log("notice!!", type, user, data.noticeId);
-  //   console.log("scrap", isScrapped, data.isScrapped);
+  const user = localStorage.getItem("googleId");
 
   const handleScrapClick = (e) => {
     e.stopPropagation();
@@ -43,7 +39,6 @@ function Notice({ data, type, scrap, setScrap }) {
           }
         )
         .then((res) => {
-          setIsScrapped(!isScrapped);
           setScrap(!scrap);
           e.stopPropagation();
           console.log(res);
@@ -66,7 +61,6 @@ function Notice({ data, type, scrap, setScrap }) {
           }
         )
         .then((res) => {
-          setIsScrapped(!isScrapped);
           setScrap(!scrap);
           e.stopPropagation();
           console.log(res);
@@ -76,11 +70,6 @@ function Notice({ data, type, scrap, setScrap }) {
         });
     }
   };
-
-  //   useEffect(() => {
-  //     setIsScrapped(data.isScrapped);
-  //     console.log("hihi");
-  //   }, [isScrapped]);
 
   return (
     <NoticeContainer

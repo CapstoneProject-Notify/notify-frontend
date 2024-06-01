@@ -1,4 +1,3 @@
-import Notice from "../../components/Notice";
 import AppLayout from "../../components/common/AppLayout";
 import SearchBox from "../../components/common/SearchBox";
 import SearchButton from "../../components/common/SearchButton";
@@ -9,10 +8,7 @@ import { useEffect, useState } from "react";
 import NoticeList from "../../components/NoticeList";
 import { useLocation } from "react-router-dom";
 import data from "../../constants/test.json";
-
-import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination";
-// import PaginationItem from "@mui/material/PaginationItem";
 
 function PostPage() {
   const [postInfo, setPostInfo] = useState(data.data);

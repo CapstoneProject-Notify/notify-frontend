@@ -1,4 +1,3 @@
-import Notice from "../../components/Notice";
 import AppLayout from "../../components/common/AppLayout";
 import SearchBox from "../../components/common/SearchBox";
 import SearchButton from "../../components/common/SearchButton";
@@ -9,19 +8,16 @@ import { useEffect, useState } from "react";
 import NoticeList from "../../components/NoticeList";
 import { useLocation } from "react-router-dom";
 import data from "../../constants/test.json";
-
-import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination";
-// import PaginationItem from "@mui/material/PaginationItem";
 
 function ScrapPage() {
   const [postInfo, setPostInfo] = useState(data.data);
   const [page, setPage] = useState(1);
+  const [scrap, setScrap] = useState(false);
+
   const totalPages = postInfo.totalPages;
-  const location = useLocation();
   const user = localStorage.getItem("googleId");
   const memId = user ? user : "";
-  const [scrap, setScrap] = useState(false);
 
   const getPost = () => {
     commonAxios

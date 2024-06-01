@@ -5,14 +5,12 @@ import Title from "../../components/common/Title";
 import styled from "@emotion/styled/macro";
 import { commonAxios } from "../../utils/commonAxios";
 import { useEffect, useState } from "react";
-import TestData from "../../constants/test.json";
 
 function MainPage() {
   const [newPost, setNewPost] = useState([]);
-  const data = TestData;
+  const [scrap, setScrap] = useState(false);
   const user = localStorage.getItem("googleId");
   const memId = user ? user : "";
-  const [scrap, setScrap] = useState(false);
 
   const getPost = () => {
     console.log(typeof memId);
@@ -23,8 +21,6 @@ function MainPage() {
       .then((res) => {
         setNewPost(res.data.data.notices);
         console.log(res);
-        // console.log(res.data.data);
-        // console.log(res.data.notices);
       })
       .catch((err) => {
         console.error(err);
@@ -64,12 +60,8 @@ function MainPage() {
             />
           </>
         ) : (
-          ""
+          "공지사항 조회를 실패했습니다."
         )}
-        {/* {console.log(newPost)}
-        <Notice data={data.data.notices[0]} type={true} />
-        <Notice data={data.data.notices[1]} type={true} />
-        <Notice data={data.data.notices[2]} type={true} /> */}
       </AppLayout>
     </>
   );

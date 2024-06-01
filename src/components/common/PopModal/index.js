@@ -11,7 +11,6 @@ function PopModal({ isOpen, setIsOpen, message }) {
       style={customModalStyles}
       ariaHideApp={false}
       contentLabel="Pop up Message"
-      //   shouldCloseOnOverlayClick={false}
     >
       <img src={NanureLogo} alt="nanure-logo" style={customImgStyles}></img>
       <div>{message}</div>
