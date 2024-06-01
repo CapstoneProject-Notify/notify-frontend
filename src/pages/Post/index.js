@@ -42,8 +42,7 @@ function PostPage() {
 
   useEffect(() => {
     getScrap();
-    console.log("hihi");
-  }, [page]);
+  }, [page, scrap]);
 
   return (
     <>
@@ -63,6 +62,7 @@ function PostPage() {
             <NoticeList
               info={postInfo.notices}
               type={type}
+              scrap={scrap}
               setScrap={setScrap}
             />
             <Pagination

@@ -21,6 +21,7 @@ function ScrapPage() {
   const location = useLocation();
   const user = localStorage.getItem("googleId");
   const memId = user ? user : "";
+  const [scrap, setScrap] = useState(false);
 
   const getPost = () => {
     commonAxios
@@ -38,7 +39,7 @@ function ScrapPage() {
 
   useEffect(() => {
     getPost();
-  }, [page]);
+  }, [page, scrap]);
 
   return (
     <>
@@ -53,7 +54,11 @@ function ScrapPage() {
         {console.log(postInfo, totalPages, page)}
         {postInfo && postInfo.notices.length > 0 ? (
           <>
-            <NoticeList info={postInfo.notices} />
+            <NoticeList
+              info={postInfo.notices}
+              scrap={scrap}
+              setScrap={setScrap}
+            />
             <Pagination page={page} setPage={setPage} totalPages={totalPages} />
           </>
         ) : (

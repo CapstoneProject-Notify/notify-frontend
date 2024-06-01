@@ -12,6 +12,7 @@ function MainPage() {
   const data = TestData;
   const user = localStorage.getItem("googleId");
   const memId = user ? user : "";
+  const [scrap, setScrap] = useState(false);
 
   const getPost = () => {
     console.log(typeof memId);
@@ -32,7 +33,7 @@ function MainPage() {
 
   useEffect(() => {
     getPost();
-  }, []);
+  }, [scrap]);
 
   return (
     <>
@@ -43,9 +44,24 @@ function MainPage() {
         </TitleContainer>
         {newPost && newPost.length > 0 ? (
           <>
-            <Notice data={newPost[0]} type="COM" />
-            <Notice data={newPost[1]} type="COM" />
-            <Notice data={newPost[2]} type="COM" />
+            <Notice
+              data={newPost[0]}
+              type="COM"
+              scrap={scrap}
+              setScrap={setScrap}
+            />
+            <Notice
+              data={newPost[1]}
+              type="COM"
+              scrap={scrap}
+              setScrap={setScrap}
+            />
+            <Notice
+              data={newPost[2]}
+              type="COM"
+              scrap={scrap}
+              setScrap={setScrap}
+            />
           </>
         ) : (
           ""
