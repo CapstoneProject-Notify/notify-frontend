@@ -1,9 +1,6 @@
-import AppLayout from "../../components/common/AppLayout";
-import {
-    NoticeContainer,
-    Title,
-  } from "../../components/Notice/styles";
 import styled from "@emotion/styled/macro";
+import AppLayout from "../../components/common/AppLayout";
+import { NoticeContainer, Title } from "../../components/Notice/styles";
 
 const data = {
   data: {

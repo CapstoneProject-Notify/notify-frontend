@@ -3,7 +3,6 @@ import InputBox from "../../components/common/InputBox";
 import React, { useState, useEffect } from "react";
 import WithdrawalButton from "../../components/common/WithdrawalButton";
 import { commonAxios } from "../../utils/commonAxios";
-import { useNavigate } from "react-router-dom";
 
 const Text = styled.div`
   height: 52px;

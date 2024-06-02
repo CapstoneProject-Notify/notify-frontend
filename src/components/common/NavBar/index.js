@@ -24,8 +24,6 @@ function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const major = isLoggedIn ? localStorage.getItem("major").toLowerCase() : "";
 
-  console.log("navbar", major);
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("googleId");
@@ -37,8 +35,8 @@ function NavBar() {
 
   const handlePopModal = (e) => {
     if (!isLoggedIn) {
-      //   e.stopPropagation();
-      //   e.preventDefault();
+      e.stopPropagation();
+      e.preventDefault();
       setIsOpen(true);
       setMessage("로그인이 필요한 기능입니다.");
     }
