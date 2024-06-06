@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { googleLogout } from "@react-oauth/google";
 import { useState, useEffect } from "react";
 import PopModal from "../PopModal";
+import { commonAxios } from "../../../utils/commonAxios";
 
 function NavBar() {
   const { location } = useLocation();
@@ -22,15 +23,17 @@ function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const major = isLoggedIn ? localStorage.getItem("major").toLowerCase() : "";
+  const [major, setMajor] = useState("");
+  const [user, setUser] = useState("");
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("authToken");
     localStorage.removeItem("googleId");
     localStorage.removeItem("major");
     setIsLoggedIn(false);
     googleLogout();
     navigate("/");
+    window.location.replace("/");
   };
 
   const handlePopModal = (e) => {
@@ -42,15 +45,34 @@ function NavBar() {
     }
   };
 
+  const getMajorInfo = () => {
+    commonAxios
+      .get(`/mem/profile`, {
+        headers: { googleId: user },
+      })
+      .then((res) => {
+        setMajor(res.data.data.major);
+        console.log(res);
+        console.log(major);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   useEffect(() => {
-    const token = /true/i.test(localStorage.getItem("token"));
+    const token = /true/i.test(localStorage.getItem("authToken"));
     setIsLoggedIn(token);
     if (token === false) {
       googleLogout();
       setIsLoggedIn(false);
+    } else {
+      setUser(localStorage.getItem("googleId"));
+      getMajorInfo();
+      console.log(user, major);
     }
-    console.log("token", token);
-  }, []);
+    console.log("authToken", token);
+  }, [isLoggedIn]);
 
   console.log("isLoggedIn", isLoggedIn);
 
