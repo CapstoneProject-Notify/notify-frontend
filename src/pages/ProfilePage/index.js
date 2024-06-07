@@ -230,6 +230,13 @@ function ProfilePage() {
         })
         .then((res) => {
           console.log(res);
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("googleId");
+          localStorage.removeItem("major");
+          //   setIsLoggedIn(false);
+          //   googleLogout();
+          navigate("/");
+          window.location.replace("/");
         })
         .catch((err) => {
           console.error(err);
@@ -314,7 +321,7 @@ function ProfilePage() {
           <OrangeText>Membership</OrangeText>
           <GreenText> Withdrawal</GreenText>
         </TextContainer>
-        <WithdrawalButton onClick={handleWithdrawalClick} />
+        <WithdrawalButton click={handleWithdrawalClick} />
       </Container>
     </PageContainer>
   );

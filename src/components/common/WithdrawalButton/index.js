@@ -1,11 +1,7 @@
 import { OrangeBackground } from "./styles";
 
-function WithdrawalButton() {
-  return (
-    <OrangeBackground>
-      Withdrawal
-    </OrangeBackground>
-  );
+function WithdrawalButton({ click }) {
+  return <OrangeBackground onClick={click}>Unsubscribe</OrangeBackground>;
 }
 
 export default WithdrawalButton;
