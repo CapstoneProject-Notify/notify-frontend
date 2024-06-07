@@ -1,17 +1,19 @@
 {
-  "acad": "학사",
-  "adm": "입학",
-  "grad": "졸업",
-  "sug": "수강신청",
-  "abeek": "ABEEK",
-  "int": "현장실습",
-  "emp": "취업",
-  "sch": "장학",
-  "rec": "채용/모집",
-  "evt_sem": "행사/세미나",
-  "con_sem": "공모전/세미나",
-  "gen": "일반",
-  "sc": "학생회",
-  "etc": "기타",
-  "all": "전체"
+  "category": [
+    { "name": "학사", "value": "acad" },
+    { "name": "입학", "value": "adm" },
+    { "name": "졸업", "value": "grad" },
+    { "name": "수강신청", "value": "sug" },
+    { "name": "ABEEK", "value": "abeek" },
+    { "name": "현장실습", "value": "int" },
+    { "name": "취업", "value": "emp" },
+    { "name": "장학", "value": "sch" },
+    { "name": "채용/모집", "value": "rec" },
+    { "name": "행사/세미나", "value": "evt_sem" },
+    { "name": "공모전/세미나", "value": "con_sem" },
+    { "name": "일반", "value": "gen" },
+    { "name": "학생회", "value": "sc" },
+    { "name": "기타", "value": "etc" },
+    { "name": "전체", "value": "all" }
+  ]
 }
