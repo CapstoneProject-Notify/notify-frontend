@@ -14,7 +14,7 @@ function MainPage() {
 
   const getPost = () => {
     commonAxios
-      .get(`/notice?type=com&page=1`, {
+      .get(`/notice?type=com&page=1&category=all&search=`, {
         headers: { googleId: memId },
       })
       .then((res) => {
