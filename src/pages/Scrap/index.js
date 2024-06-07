@@ -43,10 +43,6 @@ function ScrapPage() {
       <AppLayout>
         <SearchContainer>
           <TitleText>{"Scrap Post"}</TitleText>
-          <SearchInput>
-            <SearchBox></SearchBox>
-            <SearchButton></SearchButton>
-          </SearchInput>
         </SearchContainer>
         {console.log(postInfo, totalPages, page)}
         {postInfo && postInfo.notices.length > 0 ? (
