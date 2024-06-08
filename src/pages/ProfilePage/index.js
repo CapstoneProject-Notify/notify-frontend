@@ -223,7 +223,6 @@ function ProfilePage() {
   };
 
   const handleWithdrawalClick = (e) => {
-    setWithdrawal(true);
     if (withdrawal) {
       commonAxios
         .delete(`/mem/delete`, {
