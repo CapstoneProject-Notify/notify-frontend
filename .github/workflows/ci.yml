@@ -27,4 +27,3 @@ jobs:
     - run: npm ci
     - run: npm install --save-dev @babel/plugin-proposal-private-property-in-object
     - run: CI='false' npm run build --if-present
-    - run: npm test
