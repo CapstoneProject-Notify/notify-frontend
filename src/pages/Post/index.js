@@ -106,9 +106,19 @@ function PostPage() {
       });
   };
 
+  // 키워드 추가하기
+  const addSearch = () => {
+    // 키워드가 빈 문자열인 경우 추가하지 않음
+    if (search.trim() === "") {
+      return;
+    }
+
+    getNotice();
+  };
+
   useEffect(() => {
     getNotice();
-  }, [page, scrap, typeUrl, category, search]);
+  }, [page, scrap, typeUrl, category]);
 
   return (
     <>
@@ -118,8 +128,11 @@ function PostPage() {
             {typeUrl == "?type=com" ? "School Post" : "Department Post"}
           </TitleText>
           <SearchInput>
-            <SearchBox></SearchBox>
-            <SearchButton></SearchButton>
+            <SearchBox
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+            ></SearchBox>
+            <SearchButton onClick={addSearch}></SearchButton>
           </SearchInput>
         </SearchContainer>
         {console.log(postInfo, totalPages, page)}

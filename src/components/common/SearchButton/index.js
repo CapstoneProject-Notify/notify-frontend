@@ -1,11 +1,7 @@
 import { GreenBackground } from "./styles";
 
-function SearchButton() {
-  return (
-    <GreenBackground>
-      SEARCH
-    </GreenBackground>
-  );
+function SearchButton({ click }) {
+  return <GreenBackground onClick={click}>SEARCH</GreenBackground>;
 }
 
 export default SearchButton;

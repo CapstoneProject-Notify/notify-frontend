@@ -1,10 +1,7 @@
 import { BoxBackground } from "./styles";
 
-function SearchBox() {
-  return (
-    <BoxBackground>
-    </BoxBackground>
-  );
+function SearchBox({ value, change }) {
+  return <BoxBackground value={value} onChange={change}></BoxBackground>;
 }
 
 export default SearchBox;
