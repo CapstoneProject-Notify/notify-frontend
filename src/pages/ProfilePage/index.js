@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import WithdrawalButton from "../../components/common/WithdrawalButton";
 import { commonAxios } from "../../utils/commonAxios";
 import { useNavigate } from "react-router-dom";
+import DelModal from "../../components/common/DelModal";
 
 const Text = styled.div`
   height: 52px;
@@ -140,6 +141,8 @@ function ProfilePage() {
   const [keyword, setKeyword] = useState("");
   const user = localStorage.getItem("googleId");
   const [withdrawal, setWithdrawal] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const message = "정말 탈퇴하시겠습니까?";
 
   //프로필 정보 불러오기
   const getProfileInfo = async () => {
@@ -325,6 +328,12 @@ function ProfilePage() {
         </TextContainer>
         <WithdrawalButton click={handleWithdrawalClick} />
       </Container>
+      <DelModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        message={message}
+        setWithdrawal={setWithdrawal}
+      />
     </PageContainer>
   );
 }
