@@ -5,71 +5,33 @@ import SearchBox from "../../components/common/SearchBox";
 import SearchButton from "../../components/common/SearchButton";
 
 import { commonAxios } from "../../utils/commonAxios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import NoticeList from "../../components/NoticeList";
 import { useLocation } from "react-router-dom";
 import data from "../../constants/test.json";
 import categoryData from "../../constants/category.json";
 import Pagination from "../../components/Pagination";
+import { Select } from "@mui/material";
 
-const com = [
-  "전체",
-  "입학",
-  "취업",
-  "채용/모집",
-  "장학",
-  "행사/세미나",
-  "일반",
-  "기타",
-];
-const bus = [
-  "전체",
-  "학사",
-  "입학",
-  "취업",
-  "채용/모집",
-  "장학",
-  "행사/세미나",
-  "일반",
-  "학생회",
-  "소식",
-  "기타",
-];
-const cos = [
-  "전체",
-  "학사",
-  "수강신청",
-  "입학",
-  "취업",
-  "채용/모집",
-  "장학",
-  "행사/세미나",
-  "일반",
-  "기타",
-];
-const aai = [
-  "전체",
-  "학사",
-  "수강신청",
-  "입학",
-  "취업",
-  "채용/모집",
-  "장학",
-  "행사/세미나",
-  "일반",
-  "기타",
-];
-const esm = [
-  "전체",
-  "학사",
-  "졸업",
-  "ABEEK",
-  "현장실습",
-  "장학",
-  "채용/모집",
-  "공모전/세미나",
-  "기타",
-];
+const categories = {
+  com: [
+    "all", "adm", "emp", "rec", "sch", "evt_sem", "gen", "etc"
+  ],
+  bus: [
+    "all", "acad", "adm", "emp", "rec", "sch", "evt_sem", "gen", "sc", "etc"
+  ],
+  cos: [
+    "all", "acad", "sug", "adm", "emp", "rec", "sch", "evt_sem", "gen", "etc"
+  ],
+  aai: [
+    "all", "acad", "sug", "adm", "emp", "rec", "sch", "evt_sem", "gen", "etc"
+  ],
+  esm: [
+    "all", "acad", "grad", "abeek", "int", "sch", "rec", "con_sem", "etc"
+  ]
+};
+
+
 
 function PostPage() {
   const [postInfo, setPostInfo] = useState(data.data);
@@ -82,6 +44,7 @@ function PostPage() {
   const major = localStorage.getItem("major");
   const type = typeUrl == "?type=com" ? "COM" : major;
   const [scrap, setScrap] = useState(false);
+  const dropdownRef = useRef(null);
 
   // 이번에 추가한 부분
   const [category, setCategory] = useState("all");
@@ -100,6 +63,7 @@ function PostPage() {
       .then((res) => {
         setPostInfo(res.data.data);
         console.log(res);
+        console.log(category);
       })
       .catch((err) => {
         console.error(err);
@@ -116,9 +80,13 @@ function PostPage() {
     getNotice();
   };
 
+  
+
   useEffect(() => {
     getNotice();
   }, [page, scrap, typeUrl, category]);
+
+
 
   return (
     <>
@@ -127,13 +95,33 @@ function PostPage() {
           <TitleText>
             {typeUrl == "?type=com" ? "School Post" : "Department Post"}
           </TitleText>
+          
+          
           <SearchInput>
+          <Dropdown
+            ref={dropdownRef}
+            value={category}
+            onChange ={(e) => {
+                setCategory(e.target.value);
+            }}
+          >
+            {categories[typeUrl.slice(6,)].map((cat) => {
+              const categoryOption = categoryData.category.find(option => option.value === cat);
+              const displayName = categoryOption ? categoryOption.name : cat;
+              return (
+                <option key={cat} value={cat}>
+                  {displayName}
+                </option>
+              );
+            })}
+          </Dropdown>
             <SearchBox
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
+              change={(event) => setSearch(event.target.value)}
             ></SearchBox>
-            <SearchButton onClick={addSearch}></SearchButton>
+            <SearchButton click={addSearch}></SearchButton>
           </SearchInput>
+          
         </SearchContainer>
         {console.log(postInfo, totalPages, page)}
         {postInfo && postInfo.notices.length > 0 ? (
@@ -181,4 +169,10 @@ export const SearchInput = styled.div`
   text-align: right;
   justify-content: flex-end;
   margin-bottom: 50px;
+`;
+const Dropdown = styled.select`
+  margin-right: 20px;
+  font-size: 18px;
+  border-radius: 5%;
+  padding: 5px;
 `;

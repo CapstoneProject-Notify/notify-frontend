@@ -1,13 +1,9 @@
 import styled from "@emotion/styled/macro";
 
 import AppLayout from "../../components/common/AppLayout";
-import SearchBox from "../../components/common/SearchBox";
-import SearchButton from "../../components/common/SearchButton";
-
 import { commonAxios } from "../../utils/commonAxios";
 import { useEffect, useState } from "react";
 import NoticeList from "../../components/NoticeList";
-import { useLocation } from "react-router-dom";
 import data from "../../constants/test.json";
 import Pagination from "../../components/Pagination";
 

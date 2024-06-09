@@ -240,8 +240,11 @@ function ProfilePage() {
           localStorage.removeItem("major");
           //   setIsLoggedIn(false);
           //   googleLogout();
-          navigate("/");
-          window.location.replace("/");
+          console.log('unsubscribe');
+          
+          //navigate("/");
+          //window.location.replace("/");
+          
         })
         .catch((err) => {
           console.error(err);
