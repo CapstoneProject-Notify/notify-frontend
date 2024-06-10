@@ -11,7 +11,7 @@ import { useLocation } from "react-router-dom";
 import data from "../../constants/test.json";
 import categoryData from "../../constants/category.json";
 import Pagination from "../../components/Pagination";
-import { Select } from "@mui/material";
+
 
 const categories = {
   com: [
@@ -36,7 +36,8 @@ const categories = {
 function PostPage() {
   const [postInfo, setPostInfo] = useState(data.data);
   const [page, setPage] = useState(1);
-  const totalPages = postInfo.totalPages;
+  //const totalPages = postInfo.totalPages;
+  const totalPages = postInfo?.totalPages || 0;
   const location = useLocation();
   const typeUrl = location.search;
   const user = localStorage.getItem("googleId");
@@ -67,6 +68,7 @@ function PostPage() {
       })
       .catch((err) => {
         console.error(err);
+        setPostInfo(null);
       });
   };
 
@@ -87,6 +89,7 @@ function PostPage() {
   }, [page, scrap, typeUrl, category]);
 
 
+  
 
   return (
     <>
@@ -140,7 +143,8 @@ function PostPage() {
             />
           </>
         ) : (
-          console.log("by")
+          <><div>게시글이 존재하지 않습니다.</div></>
+          
         )}
       </AppLayout>
     </>

@@ -169,6 +169,28 @@ function ProfilePage() {
     getProfileInfo();
   }, []);
 
+  useEffect(() => {
+    if (withdrawal) {
+      commonAxios
+        .delete(`/mem/delete`, {
+          data: {
+            googleId: user,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("googleId");
+          localStorage.removeItem("major");
+          navigate("/");
+          window.location.replace("/");
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [withdrawal]);
+
   // 키워드 추가하기
   const addKeyword = () => {
     // 키워드가 빈 문자열인 경우 추가하지 않음
@@ -225,49 +247,11 @@ function ProfilePage() {
       });
   };
 
-  const handleWithdrawalClick = (e) => {
-    if (withdrawal) {
-      commonAxios
-        .delete(`/mem/delete`, {
-          data: {
-            googleId: user,
-          },
-        })
-        .then((res) => {
-          console.log(res);
-          localStorage.removeItem("authToken");
-          localStorage.removeItem("googleId");
-          localStorage.removeItem("major");
-          //   setIsLoggedIn(false);
-          //   googleLogout();
-          console.log('unsubscribe');
-          
-          //navigate("/");
-          //window.location.replace("/");
-          
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-  };
 
-  /*const deleteAccount = () => {
-    commonAxios
-      .delete(`/mem/delete`, {
-          headers: { googleId: user },
-      })
-      .then((res) => {
-        localStorage.setItem("authToken", true);
-        console.log(`회원 탈퇴 성공`);
-        
-        navigate("/");
-      })
-      .catch((err) => {
-        localStorage.setItem("authToken", false);
-        console.error(err);
-      });
-  };*/
+
+  const popModal = () => {
+    setIsOpen(true);
+  }
 
   return (
     <PageContainer>
@@ -326,10 +310,10 @@ function ProfilePage() {
             ))}
         </Keywords>
         <TextContainer>
-          <OrangeText>Membership</OrangeText>
-          <GreenText> Withdrawal</GreenText>
+          <OrangeText>Delete</OrangeText>
+          <GreenText> Account</GreenText>
         </TextContainer>
-        <WithdrawalButton click={handleWithdrawalClick} />
+        <WithdrawalButton click={popModal} />
       </Container>
       <DelModal
         isOpen={isOpen}

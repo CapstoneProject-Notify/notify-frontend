@@ -4,10 +4,9 @@ import NanureLogo from "../../../assets/logo.png";
 
 function DelModal({ isOpen, setIsOpen, message, setWithdrawal }) {
   const handleModalBtn = (e) => {
-    setIsOpen(true);
+    setIsOpen(false);
     setWithdrawal(true);
     e.stopPropagation();
-    console.log('hi');
   };
 
   return (
