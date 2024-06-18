@@ -182,8 +182,8 @@ function ProfilePage() {
           localStorage.removeItem("authToken");
           localStorage.removeItem("googleId");
           localStorage.removeItem("major");
-          navigate("/");
-          window.location.replace("/");
+          //navigate("/");
+          //window.location.replace("/");
         })
         .catch((err) => {
           console.error(err);

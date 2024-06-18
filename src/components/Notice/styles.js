@@ -27,6 +27,7 @@ export const Title = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 `;
 
 export const RightContainer = styled.div`

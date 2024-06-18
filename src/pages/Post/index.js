@@ -96,7 +96,9 @@ function PostPage() {
       <AppLayout>
         <SearchContainer>
           <TitleText>
-            {typeUrl == "?type=com" ? "School Post" : "Department Post"}
+          <a href={window.location.href}>
+    {typeUrl == "?type=com" ? "School Post" : "Department Post"}
+  </a>
           </TitleText>
           
           
