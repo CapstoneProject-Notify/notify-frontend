@@ -169,21 +169,20 @@ function ProfilePage() {
     getProfileInfo();
   }, []);
 
+  // 회원 탈퇴하기
   useEffect(() => {
     if (withdrawal) {
       commonAxios
         .delete(`/mem/delete`, {
-          data: {
-            googleId: user,
-          },
+          headers: { googleId: user },
         })
         .then((res) => {
           console.log(res);
           localStorage.removeItem("authToken");
           localStorage.removeItem("googleId");
           localStorage.removeItem("major");
-          //navigate("/");
-          //window.location.replace("/");
+          navigate("/");
+          window.location.replace("/");
         })
         .catch((err) => {
           console.error(err);
